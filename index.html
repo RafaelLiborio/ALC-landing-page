@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aristocracia Larper Comunista · LARP & RPG</title>
-  <meta name="description" content="O grupo brasileiro de LARP onde a cavalaria encontra a luta de classes. Espadas de espuma, castelos imaginários e assembleia no fim da campanha.">
+  <title>ALC • República Socialista do Summoner's Rift</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Space+Grotesk:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
+    /* ==========================================================
+       PALETA REVOLUCIONÁRIA & VARIÁVEIS DE DESIGN
+       ========================================================== */
     :root {
-      --crimson-dark: #4e0f14;
-      --crimson: #8c1d24;
-      --crimson-light: #ad2831;
-      --gold-dark: #8c6d23;
-      --gold: #b8903a;
-      --gold-bright: #d4a94a;
-      --gold-light: #f5df97;
-      --parchment-light: #fcf8ee;
-      --parchment: #f4ecdb;
-      --parchment-dark: #e8dcbf;
-      --dark-stone: #1a1614;
-      --dark-stone-soft: #27211d;
-      --dark-stone-card: #332b26;
-      --text-dark: #231e1a;
-      --text-muted: #6e645a;
-      --text-light: #f4ecdb;
-      --shadow-sm: 0 2px 8px rgba(26, 22, 20, 0.08);
-      --shadow-md: 0 6px 20px rgba(26, 22, 20, 0.16);
-      --shadow-lg: 0 12px 36px rgba(26, 22, 20, 0.25);
-      --border-medieval: 2px solid var(--gold);
+      --red-flag: #c61a29;
+      --red-deep: #7a0b14;
+      --red-darkest: #3d0509;
+      --gold-star: #f5b700;
+      --gold-light: #ffd859;
+      --gold-muted: #b8860b;
+      --bg-dark: #0f1015;
+      --bg-surface: #171922;
+      --bg-surface-elevated: #212431;
+      --border-soviet: rgba(245, 183, 0, 0.28);
+      --border-red: rgba(198, 26, 41, 0.4);
+      --text-main: #f5f6fa;
+      --text-muted: #a4abbd;
+      --text-gold: #ffd859;
+      --shadow-heavy: 0 16px 36px rgba(0, 0, 0, 0.65);
+      --shadow-glow-red: 0 0 35px rgba(198, 26, 41, 0.35);
+      --shadow-glow-gold: 0 0 30px rgba(245, 183, 0, 0.3);
+      --font-display: 'Russo One', sans-serif;
+      --font-body: 'Space Grotesk', -apple-system, sans-serif;
+      --font-crest: 'Cinzel', serif;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -44,160 +45,125 @@
     }
 
     body {
-      background-color: var(--parchment);
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(212, 169, 74, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(140, 29, 36, 0.06) 0%, transparent 50%);
-      color: var(--text-dark);
-      font-family: 'Crimson Pro', Georgia, serif;
-      font-size: 20px;
-      line-height: 1.6;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
       overflow-x: hidden;
-      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(198, 26, 41, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 30%, rgba(245, 183, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(198, 26, 41, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
     }
 
-    /* Ambient particles canvas */
+    /* Ambient Canvas */
     #particles-canvas {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 1;
-      opacity: 0.65;
+      z-index: 0;
     }
 
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Typography */
-    h1, h2, h3, h4, .font-cinzel {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 0.04em;
-    }
-
-    .eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      margin-bottom: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .eyebrow::before, .eyebrow::after {
-      content: '❖';
-      font-size: 10px;
-      color: var(--gold);
-    }
-    .eyebrow.gold {
-      color: var(--gold-bright);
-    }
-    .eyebrow.gold::before, .eyebrow.gold::after {
-      color: var(--gold-light);
-    }
-
-    /* Navbar */
-    .header-nav {
+    /* ==========================================================
+       BARRA DE NAVEGAÇÃO REVOLUCIONÁRIA
+       ========================================================== */
+    .soviet-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(244, 236, 219, 0.94);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--gold);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(15, 16, 21, 0.88);
+      border-bottom: 2px solid var(--border-soviet);
       transition: all 0.3s ease;
     }
 
-    .nav-inner {
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 1.5rem;
     }
 
-    .logo-badge {
+    .nav-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.8rem;
       text-decoration: none;
-      color: var(--crimson);
+      color: inherit;
     }
 
-    .logo-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .logo-badge:hover .logo-img {
-      transform: rotate(-8deg) scale(1.08);
+    .nav-star-icon {
+      font-size: 1.8rem;
+      color: var(--gold-star);
+      filter: drop-shadow(0 0 10px rgba(245, 183, 0, 0.6));
+      animation: pulse-star 3s infinite ease-in-out;
     }
 
-    .logo-title {
-      font-family: 'Cinzel', serif;
-      font-weight: 800;
-      font-size: 17px;
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-      display: flex;
-      flex-direction: column;
+    @keyframes pulse-star {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.12) rotate(6deg); }
     }
-    .logo-sub {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      color: var(--gold-dark);
+
+    .nav-title-group h1 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #fff, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-title-group span {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      color: var(--red-flag);
       font-weight: 700;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 1.5rem;
       list-style: none;
     }
 
     .nav-links a {
-      font-family: 'Cinzel', serif;
-      font-size: 13.5px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      color: var(--text-muted);
       text-decoration: none;
-      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
       position: relative;
-      padding: 6px 2px;
-      transition: color 0.2s;
     }
+
     .nav-links a:hover {
-      color: var(--crimson);
+      color: var(--gold-light);
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: 0;
       left: 0;
-      width: 0%;
+      bottom: -4px;
+      width: 0;
       height: 2px;
-      background: var(--crimson);
+      background: var(--gold-star);
       transition: width 0.25s ease;
     }
+
     .nav-links a:hover::after {
       width: 100%;
     }
@@ -205,2068 +171,2402 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.8rem;
     }
 
-    .sound-toggle-btn {
-      background: #ede1cb;
-      border: 1.5px solid var(--gold);
-      color: var(--text-dark);
-      cursor: pointer;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      transition: all 0.2s;
-      title: "Alternar efeitos sonoros";
-    }
-    .sound-toggle-btn:hover {
-      background: var(--gold-light);
-      transform: scale(1.05);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 0 28px;
-      font-family: 'Cinzel', serif;
+    .btn-audio {
+      background: rgba(198, 26, 41, 0.2);
+      border: 1px solid var(--gold-star);
+      color: var(--gold-light);
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.84rem;
       font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.09em;
-      text-decoration: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: all 0.25s ease;
-      position: relative;
-      border: none;
-      user-select: none;
+      letter-spacing: 0.5px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
-      color: var(--text-light);
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 14px rgba(140, 29, 36, 0.35);
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, var(--crimson-light) 0%, var(--crimson) 100%);
+    .btn-audio:hover {
+      background: rgba(198, 26, 41, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(140, 29, 36, 0.45);
+      box-shadow: 0 0 15px rgba(245, 183, 0, 0.4);
+    }
+
+    .btn-audio.playing {
+      background: linear-gradient(135deg, var(--red-flag), var(--red-deep));
       color: #fff;
-    }
-    .btn-primary:active {
-      transform: translateY(1px);
-    }
-
-    .btn-secondary {
-      background: var(--parchment-light);
-      color: var(--crimson);
-      border: 2px solid var(--gold);
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-secondary:hover {
-      background: #fff;
-      color: var(--crimson-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      border-color: var(--gold-star);
+      box-shadow: 0 0 25px rgba(198, 26, 41, 0.8), 0 0 12px rgba(245, 183, 0, 0.6);
+      animation: anthem-pulse 1.8s infinite alternate ease-in-out;
     }
 
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
-      color: var(--dark-stone);
-      border: 2px solid var(--crimson);
-      font-weight: 800;
-      box-shadow: 0 4px 14px rgba(184, 144, 58, 0.35);
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(184, 144, 58, 0.5);
+    @keyframes anthem-pulse {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(198, 26, 41, 0.5); }
+      100% { transform: scale(1.04); box-shadow: 0 0 30px rgba(245, 183, 0, 0.8); }
     }
 
-    .btn-sm {
-      min-height: 38px;
-      padding: 0 18px;
-      font-size: 12px;
-    }
-
-    /* Hero Section */
-    .hero-section {
-      padding: 64px 0 80px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-emblem-wrap {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 24px;
-      perspective: 1000px;
-    }
-
-    .hero-emblem {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      filter: drop-shadow(0 16px 28px rgba(42, 37, 34, 0.28));
-      transition: transform 0.2s cubic-bezier(0.2, 0, 0.1, 1);
-      cursor: pointer;
-    }
-
-    .emblem-halo {
-      position: absolute;
-      top: 50%;
+    /* Floating Soviet Anthem Player */
+    .anthem-floating-bar {
+      position: fixed;
+      bottom: 1.5rem;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(212, 169, 74, 0.28) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: -1;
-      animation: pulseGlow 4s ease-in-out infinite alternate;
+      transform: translateX(-50%) translateY(160%);
+      background: linear-gradient(135deg, #240508, #131620);
+      border: 2px solid var(--gold-star);
+      border-radius: 14px;
+      padding: 0.85rem 1.6rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(198, 26, 41, 0.6);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: 92vw;
     }
 
-    @keyframes pulseGlow {
-      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+    .anthem-floating-bar.active {
+      transform: translateX(-50%) translateY(0);
     }
 
-    .hero-badge-tag {
+    .anthem-disc {
+      font-size: 2rem;
+      color: var(--gold-star);
+      animation: spin 3.5s linear infinite;
+      filter: drop-shadow(0 0 10px rgba(245, 183, 0, 0.7));
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .anthem-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .anthem-info strong {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+    }
+
+    .anthem-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .anthem-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px;
+    }
+
+    .anthem-bar {
+      width: 3.5px;
+      background: var(--gold-star);
+      border-radius: 2px;
+      animation: wave 0.8s infinite ease-in-out alternate;
+    }
+
+    .anthem-bar:nth-child(1) { height: 35%; animation-delay: 0.1s; }
+    .anthem-bar:nth-child(2) { height: 85%; animation-delay: 0.3s; }
+    .anthem-bar:nth-child(3) { height: 100%; animation-delay: 0.2s; }
+    .anthem-bar:nth-child(4) { height: 60%; animation-delay: 0.4s; }
+
+    @keyframes wave {
+      0% { height: 20%; }
+      100% { height: 100%; }
+    }
+
+    .btn-floating-pause {
+      background: rgba(245, 183, 0, 0.15);
+      border: 1px solid var(--gold-star);
+      color: var(--gold-light);
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .btn-floating-pause:hover {
+      background: var(--gold-star);
+      color: var(--red-darkest);
+    }
+
+    .btn-join {
+      background: linear-gradient(135deg, var(--red-flag), var(--red-deep));
+      border: 1px solid rgba(255, 216, 89, 0.4);
+      color: #fff;
+      font-family: var(--font-display);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(198, 26, 41, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-join:hover {
+      background: linear-gradient(135deg, #e01e30, var(--red-flag));
+      box-shadow: 0 6px 22px rgba(198, 26, 41, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       TICKER DE PROPAGANDA (NOTÍCIAS DO RIFT)
+       ========================================================== */
+    .propaganda-ticker {
+      background: var(--red-deep);
+      border-bottom: 2px solid var(--gold-star);
+      color: #fff;
+      padding: 0.4rem 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-label {
+      background: var(--gold-star);
+      color: var(--red-darkest);
+      font-family: var(--font-display);
+      padding: 0.2rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      z-index: 2;
+      box-shadow: 4px 0 12px rgba(0,0,0,0.4);
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: ticker-slide 32s linear infinite;
+      padding-left: 2rem;
+    }
+
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================
+       HERO SECTION
+       ========================================================== */
+    .hero-section {
+      position: relative;
+      z-index: 10;
+      padding: 4.5rem 1.5rem 4rem;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 18px;
-      background: rgba(140, 29, 36, 0.08);
-      border: 1px solid var(--gold);
-      border-radius: 40px;
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
+      gap: 0.5rem;
+      background: rgba(198, 26, 41, 0.16);
+      border: 1px solid var(--border-red);
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--crimson);
-      margin-bottom: 18px;
-      letter-spacing: 0.08em;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      width: fit-content;
     }
 
     .hero-title {
-      font-size: clamp(34px, 5.8vw, 62px);
-      line-height: 1.1;
-      color: var(--crimson);
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 5.2vw, 4rem);
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .hero-title span {
-      display: block;
-      color: var(--dark-stone);
+    .hero-title .highlight-red {
+      color: var(--red-flag);
+      text-shadow: 0 0 25px rgba(198, 26, 41, 0.6);
     }
 
-    .hero-subtitle {
-      max-width: 720px;
-      margin: 0 auto 36px;
-      font-size: clamp(21px, 2.8vw, 26px);
-      font-style: italic;
-      color: #3b342f;
-      line-height: 1.5;
+    .hero-title .highlight-gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-star));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 20px rgba(245, 183, 0, 0.4));
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+
+    .hero-desc strong {
+      color: var(--text-main);
     }
 
     .hero-cta-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 1.1rem;
+      margin-top: 0.6rem;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--red-flag), var(--red-deep));
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      padding: 0.95rem 1.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(255, 216, 89, 0.4);
+      box-shadow: var(--shadow-glow-red);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 45px rgba(198, 26, 41, 0.7);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(23, 25, 34, 0.85);
+      border: 1px solid var(--border-soviet);
+      color: var(--gold-light);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      padding: 0.95rem 1.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(245, 183, 0, 0.12);
+      border-color: var(--gold-star);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    /* Hero Emblem Box */
+    .hero-emblem-wrapper {
+      position: relative;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Floating quick stats / highlight banner */
-    .quick-stats-bar {
-      margin-top: 52px;
-      background: #fbf5e7;
-      border: 2px solid var(--gold);
-      box-shadow: var(--shadow-sm);
-      padding: 18px 24px;
-      border-radius: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-      text-align: center;
+    .emblem-glow-bg {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(198, 26, 41, 0.45) 0%, rgba(245, 183, 0, 0.18) 45%, transparent 70%);
+      filter: blur(40px);
+      z-index: 1;
+      animation: breathe 5s infinite alternate ease-in-out;
     }
 
-    .stat-item {
-      flex: 1;
-      min-width: 140px;
+    @keyframes breathe {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.15); opacity: 1; }
     }
 
-    .stat-number {
-      font-family: 'Cinzel', serif;
-      font-size: 26px;
-      font-weight: 900;
-      color: var(--crimson);
-    }
-
-    .stat-label {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.2;
-    }
-
-    /* Section Structure */
-    .section-wrap {
-      padding: 84px 0;
+    .hero-emblem-card {
       position: relative;
+      z-index: 2;
+      background: linear-gradient(145deg, #1f222e, #13141a);
+      border: 3px solid var(--gold-star);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-heavy), var(--shadow-glow-gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 380px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-emblem-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--shadow-heavy), 0 0 50px rgba(245, 183, 0, 0.5);
+    }
+
+    .emblem-image-container {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--gold-star);
+      box-shadow: 0 0 25px rgba(245, 183, 0, 0.4);
+      margin-bottom: 1.2rem;
+      background: #000;
+      position: relative;
+    }
+
+    .emblem-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-emblem-card:hover .emblem-image-container img {
+      transform: scale(1.08);
+    }
+
+    .emblem-title {
+      font-family: var(--font-crest);
+      font-size: 1.45rem;
+      color: var(--gold-star);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .emblem-motto {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    .emblem-pill {
+      margin-top: 1rem;
+      background: var(--red-flag);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(198, 26, 41, 0.5);
+    }
+
+    /* ==========================================================
+       SEÇÕES GERAIS E CONTAINER
+       ========================================================== */
+    .section-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+      position: relative;
+      z-index: 10;
     }
 
     .section-header {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 52px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--red-flag);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
 
     .section-title {
-      font-size: clamp(30px, 4.2vw, 44px);
-      color: var(--dark-stone);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .section-title.light {
-      color: var(--parchment);
-    }
-
-    .section-desc {
-      font-size: 21px;
-      color: var(--text-muted);
-    }
-    .section-desc.light {
-      color: #d1c4aa;
-    }
-
-    /* Interactive Class Quiz Card */
-    .interactive-box {
-      background: var(--parchment-light);
-      border: 2px solid var(--gold);
-      box-shadow: var(--shadow-md);
-      border-radius: 4px;
-      padding: 36px 32px;
-      position: relative;
-    }
-
-    /* Ribbon / Seal Header */
-    .box-ribbon {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .quiz-step-indicator {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .step-dot {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      background: var(--parchment);
-      color: var(--text-muted);
-      transition: all 0.3s;
-    }
-
-    .step-dot.active {
-      background: var(--crimson);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       color: #fff;
-      border-color: var(--gold-bright);
-      transform: scale(1.15);
-      box-shadow: 0 2px 8px rgba(140, 29, 36, 0.3);
     }
 
-    .step-dot.completed {
-      background: var(--gold);
-      color: var(--dark-stone);
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 0.8rem;
     }
 
-    .quiz-question-title {
-      font-family: 'Cinzel', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--crimson);
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .quiz-options-grid {
+    /* ==========================================================
+       MANIFESTO DO RIFT (CARDS ESTILO CARTAZ SOVIÉTICO)
+       ========================================================== */
+    .manifesto-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
     }
 
-    .quiz-option-card {
-      background: #faf4e6;
-      border: 2px solid #dfd3b8;
-      border-radius: 6px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.25s ease;
+    .manifesto-card {
+      background: linear-gradient(160deg, var(--bg-surface-elevated), var(--bg-surface));
+      border: 1px solid var(--border-soviet);
+      border-radius: 14px;
+      padding: 2.2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .manifesto-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red-flag), var(--gold-star));
+      opacity: 0.7;
+    }
+
+    .manifesto-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--gold-star);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(198, 26, 41, 0.25);
+    }
+
+    .card-number {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: rgba(245, 183, 0, 0.08);
+      user-select: none;
+      line-height: 1;
+    }
+
+    .card-icon {
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .card-quote {
+      margin-top: 1.2rem;
+      padding-top: 0.9rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--red-flag);
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       FERRAMENTA 1: CALCULADORA DE MAIS-VALIA DE LOL
+       ========================================================== */
+    .calculator-container {
+      background: linear-gradient(150deg, #1c1f2b, #12141c);
+      border: 2px solid var(--border-soviet);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: var(--shadow-heavy), var(--shadow-glow-red);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .calc-controls {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      text-align: left;
+      gap: 1.8rem;
     }
 
-    .quiz-option-card:hover {
-      border-color: var(--crimson);
-      background: #fffdf7;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .quiz-option-card.selected {
-      border-color: var(--crimson);
-      background: #fdf5f2;
-      box-shadow: 0 0 0 2px var(--crimson);
-    }
-
-    .option-icon {
-      font-size: 28px;
-      line-height: 1;
-    }
-
-    .option-title {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--crimson-dark);
-    }
-
-    .option-desc {
-      font-size: 17px;
-      color: var(--text-dark);
-      line-height: 1.4;
-    }
-
-    /* Result Parchment */
-    .result-parchment {
-      display: none;
-      background: #fffbee;
-      border: 3px double var(--gold);
-      padding: 36px 28px;
-      text-align: center;
-      position: relative;
-      animation: fadeInScale 0.4s ease forwards;
-    }
-
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.96); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .result-badge {
-      font-size: 56px;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .result-class-name {
-      font-family: 'Cinzel', serif;
-      font-size: 32px;
-      font-weight: 900;
-      color: var(--crimson);
-      margin-bottom: 6px;
-    }
-
-    .result-title-proletario {
-      font-family: 'Cinzel', serif;
-      font-size: 19px;
-      color: var(--gold-dark);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      margin-bottom: 18px;
-    }
-
-    .result-lore {
-      font-size: 20px;
-      max-width: 600px;
-      margin: 0 auto 24px;
-      font-style: italic;
-      color: #3b3530;
-    }
-
-    .result-stats-bar {
+    .calc-input-group {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 28px;
-      padding: 16px;
-      background: rgba(184, 144, 58, 0.1);
-      border-radius: 4px;
-      border: 1px dashed var(--gold);
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    .res-stat {
-      font-size: 16px;
-      font-family: 'Cinzel', serif;
-    }
-    .res-stat b {
-      color: var(--crimson);
-    }
-
-    .result-actions {
+    .calc-label-row {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
     }
 
-    /* D20 Interactive Roller Section */
-    .d20-stage {
-      background: linear-gradient(145deg, #241d1a 0%, #15110f 100%);
-      color: var(--parchment);
-      border: 2px solid var(--gold);
-      box-shadow: var(--shadow-lg);
-      padding: 48px 32px;
-      text-align: center;
-      border-radius: 6px;
+    .calc-label-row span.val-display {
+      font-family: var(--font-display);
+      color: var(--gold-star);
+      font-size: 1.25rem;
+    }
+
+    .calc-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold-star);
+      border: 3px solid var(--red-flag);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(245, 183, 0, 0.7);
+      transition: transform 0.15s;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .btn-socialize {
+      background: linear-gradient(135deg, var(--red-flag), var(--red-deep));
+      border: 2px solid var(--gold-star);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      padding: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 25px rgba(198, 26, 41, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .btn-socialize:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(198, 26, 41, 0.7);
+      background: linear-gradient(135deg, #e01e30, var(--red-flag));
+    }
+
+    .calc-results-box {
+      background: rgba(15, 16, 21, 0.85);
+      border: 2px solid rgba(245, 183, 0, 0.35);
+      border-radius: 16px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
       position: relative;
       overflow: hidden;
     }
 
-    .d20-stage::before {
-      content: '';
+    .results-watermark {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(212, 169, 74, 0.08) 0%, transparent 60%);
+      right: -25px;
+      bottom: -35px;
+      font-size: 9rem;
+      color: rgba(245, 183, 0, 0.04);
+      user-select: none;
       pointer-events: none;
     }
 
-    .d20-dice-wrapper {
-      position: relative;
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 28px;
-      cursor: pointer;
-      perspective: 800px;
-    }
-
-    .d20-die {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--crimson-light) 0%, var(--crimson-dark) 100%);
-      border: 3px solid var(--gold-bright);
-      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    .result-row {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      transition: transform 0.15s ease, filter 0.2s ease;
-      position: relative;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .d20-die:hover {
-      filter: brightness(1.15);
-      transform: scale(1.05);
+    .result-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
-    .d20-die.rolling {
-      animation: rollD20 1s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+    .result-title {
+      font-size: 0.92rem;
+      color: var(--text-muted);
     }
 
-    @keyframes rollD20 {
-      0% { transform: rotate(0deg) scale(0.9); }
-      30% { transform: rotate(360deg) scale(1.2); }
-      60% { transform: rotate(720deg) scale(0.85); }
-      85% { transform: rotate(1040deg) scale(1.1); }
-      100% { transform: rotate(1080deg) scale(1); }
+    .result-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff;
     }
 
-    .d20-number {
-      font-family: 'Cinzel', serif;
-      font-size: 48px;
-      font-weight: 900;
+    .result-value.gold {
       color: var(--gold-light);
-      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-      line-height: 1;
-      user-select: none;
+      text-shadow: 0 0 15px rgba(245, 183, 0, 0.4);
     }
 
-    .d20-symbol {
-      font-size: 14px;
-      color: rgba(245, 223, 151, 0.7);
-      margin-top: -4px;
+    .result-value.red {
+      color: var(--red-flag);
     }
 
-    .d20-result-banner {
-      min-height: 100px;
-      max-width: 680px;
-      margin: 0 auto 24px;
-      padding: 18px 24px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(212, 169, 74, 0.3);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 6px;
+    .verdict-badge {
+      background: rgba(198, 26, 41, 0.25);
+      border: 1px solid var(--red-flag);
+      color: var(--gold-light);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      text-align: center;
+      font-weight: 600;
     }
 
-    .d20-result-title {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gold-bright);
-    }
-
-    .d20-result-desc {
-      font-size: 19px;
-      color: #ede2cb;
-      font-style: italic;
-    }
-
-    .d20-history-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .d20-chip {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(212, 169, 74, 0.4);
-      padding: 4px 10px;
+    /* ==========================================================
+       FERRAMENTA 2: O TRIBUNAL REVOLUCIONÁRIO DO RIFT
+       ========================================================== */
+    .tribunal-wrapper {
+      background: linear-gradient(150deg, #1b1e2a, #11131a);
+      border: 2px solid var(--border-soviet);
       border-radius: 20px;
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--gold-light);
-    }
-    .d20-chip.crit-20 {
-      border-color: #ffd700;
-      background: rgba(255, 215, 0, 0.2);
-      color: #ffe66d;
-    }
-    .d20-chip.crit-1 {
-      border-color: #ff5252;
-      background: rgba(255, 82, 82, 0.2);
-      color: #ff8a80;
-    }
-
-    /* Manifesto Section */
-    .manifesto-section {
-      background: var(--dark-stone);
-      color: var(--parchment);
-      padding: 92px 0;
-      position: relative;
-      border-top: 2px solid var(--gold);
-      border-bottom: 2px solid var(--gold);
-    }
-
-    .manifesto-parchment {
-      max-width: 860px;
+      padding: 3rem;
+      box-shadow: var(--shadow-heavy);
+      max-width: 900px;
       margin: 0 auto;
       text-align: center;
       position: relative;
     }
 
-    .manifesto-text {
-      font-size: 23px;
-      line-height: 1.65;
-      margin-bottom: 22px;
-      color: #f1e7d0;
-    }
-
-    .manifesto-highlight {
-      color: var(--gold-bright);
-      font-weight: 700;
-    }
-
-    /* Princípios Cards */
-    .principles-strip {
-      background: linear-gradient(135deg, var(--crimson-dark) 0%, #681117 100%);
-      color: var(--parchment);
-      padding: 76px 0;
-      border-top: 2px solid var(--gold);
-      border-bottom: 2px solid var(--gold);
-    }
-
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      text-align: center;
-    }
-
-    .principle-card {
-      background: rgba(0, 0, 0, 0.22);
-      border: 1px solid rgba(212, 169, 74, 0.4);
-      padding: 32px 24px;
-      border-radius: 4px;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-    .principle-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold-bright);
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    .principle-num {
-      font-family: 'Cinzel', serif;
-      font-size: 46px;
-      font-weight: 900;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-      line-height: 1;
-    }
-
-    .principle-title {
-      font-family: 'Cinzel', serif;
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+    .tribunal-header-badge {
+      display: inline-block;
+      background: var(--red-flag);
       color: #fff;
-      line-height: 1.35;
-    }
-
-    /* Three Fronts (O que fazemos) */
-    .fronts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 28px;
-    }
-
-    .front-card {
-      background: #faf4e6;
-      border: 2px solid var(--gold);
-      padding: 36px 28px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      padding: 0.35rem 1rem;
       border-radius: 4px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .case-card {
+      background: rgba(15, 16, 21, 0.9);
+      border: 1px solid rgba(245, 183, 0, 0.3);
+      border-radius: 12px;
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-      position: relative;
+      justify-content: center;
+      align-items: center;
     }
 
-    .front-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      background: #fffdf8;
-      border-color: var(--crimson);
+    .case-number {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: var(--gold-star);
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
     }
 
-    .front-icon {
-      font-size: 38px;
-      line-height: 1;
+    .case-accused {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
     }
 
-    .front-title {
-      font-family: 'Cinzel', serif;
-      font-size: 23px;
-      color: var(--crimson);
-      font-weight: 700;
-    }
-
-    .front-text {
-      font-size: 19px;
-      color: #3b3530;
+    .case-crime {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 680px;
       line-height: 1.5;
     }
 
-    /* Arsenal & Equipment Tabs */
-    .arsenal-box {
-      background: #fdfaf2;
-      border: 2px solid var(--gold);
-      border-radius: 4px;
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-    }
-
-    .arsenal-nav {
-      display: flex;
-      border-bottom: 2px solid var(--gold);
-      background: #ede1cb;
-      overflow-x: auto;
-    }
-
-    .arsenal-tab-btn {
-      flex: 1;
-      min-width: 160px;
-      padding: 16px 20px;
-      background: transparent;
-      border: none;
-      font-family: 'Cinzel', serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-dark);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s;
-    }
-
-    .arsenal-tab-btn:hover {
-      background: rgba(184, 144, 58, 0.2);
-    }
-
-    .arsenal-tab-btn.active {
-      background: var(--crimson);
-      color: #fff;
-    }
-
-    .arsenal-content-panel {
-      padding: 36px 32px;
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .arsenal-content-panel.active {
-      display: block;
-    }
-
-    .equipment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .equip-item {
-      background: #f7eee0;
-      border: 1px solid var(--gold);
-      padding: 20px;
-      border-radius: 4px;
-    }
-
-    .equip-badge {
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--crimson);
-      letter-spacing: 0.1em;
+    /* Animated Stamp */
+    .tribunal-stamp {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg) scale(0);
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      padding: 0.8rem 2rem;
+      border: 6px dashed;
+      border-radius: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 20;
     }
 
-    .equip-name {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark-stone);
-      margin-bottom: 8px;
+    .tribunal-stamp.gulag {
+      color: #ff3344;
+      border-color: #ff3344;
+      background: rgba(255, 51, 68, 0.15);
+      text-shadow: 0 0 20px rgba(255, 51, 68, 0.7);
     }
 
-    .equip-desc {
-      font-size: 17px;
-      color: var(--text-dark);
-      line-height: 1.4;
+    .tribunal-stamp.hero {
+      color: var(--gold-star);
+      border-color: var(--gold-star);
+      background: rgba(245, 183, 0, 0.15);
+      text-shadow: 0 0 20px rgba(245, 183, 0, 0.7);
     }
 
-    /* FAQ Accordion */
-    .faq-accordion {
+    .tribunal-stamp.reeducate {
+      color: #00e5ff;
+      border-color: #00e5ff;
+      background: rgba(0, 229, 255, 0.15);
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
+    }
+
+    .tribunal-stamp.active {
+      transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+      opacity: 1;
+    }
+
+    .tribunal-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .btn-verdict {
+      padding: 1.1rem;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      max-width: 860px;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-verdict.gulag-btn {
+      background: rgba(198, 26, 41, 0.15);
+      border: 2px solid var(--red-flag);
+      color: #ff4d5a;
+    }
+
+    .btn-verdict.gulag-btn:hover {
+      background: var(--red-flag);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(198, 26, 41, 0.6);
+    }
+
+    .btn-verdict.reeducate-btn {
+      background: rgba(0, 229, 255, 0.1);
+      border: 2px solid #00e5ff;
+      color: #00e5ff;
+    }
+
+    .btn-verdict.reeducate-btn:hover {
+      background: #00e5ff;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+    }
+
+    .btn-verdict.hero-btn {
+      background: rgba(245, 183, 0, 0.15);
+      border: 2px solid var(--gold-star);
+      color: var(--gold-light);
+    }
+
+    .btn-verdict.hero-btn:hover {
+      background: var(--gold-star);
+      color: var(--red-darkest);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 183, 0, 0.5);
+    }
+
+    .tribunal-score-bar {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-around;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .tribunal-score-bar strong {
+      color: var(--gold-light);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+    }
+
+    /* ==========================================================
+       FERRAMENTA 3: GERADOR DE NICKS REVOLUCIONÁRIOS
+       ========================================================== */
+    .generator-card {
+      background: linear-gradient(150deg, #1f2230, #13141c);
+      border: 2px solid var(--border-soviet);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow-heavy);
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .nick-display-box {
+      background: rgba(10, 11, 15, 0.9);
+      border: 2px dashed var(--gold-star);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .nick-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--gold-light);
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(245, 183, 0, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .nick-lore {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+      font-style: italic;
+    }
+
+    .generator-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gen {
+      background: linear-gradient(135deg, var(--red-flag), var(--red-deep));
+      border: 1px solid rgba(255, 216, 89, 0.4);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 0.85rem 1.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(198, 26, 41, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-gen:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(198, 26, 41, 0.6);
+    }
+
+    .btn-copy-nick {
+      background: rgba(245, 183, 0, 0.12);
+      border: 1px solid var(--border-soviet);
+      color: var(--gold-light);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 0.85rem 1.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-nick:hover {
+      background: rgba(245, 183, 0, 0.25);
+      border-color: var(--gold-star);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       FERRAMENTA 4: QUIZ REVOLUCIONÁRIO DE CLASSE DO RIFT
+       ========================================================== */
+    .quiz-card {
+      background: linear-gradient(150deg, #1c1f2b, #12141c);
+      border: 2px solid var(--border-soviet);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: var(--shadow-heavy);
+      max-width: 840px;
       margin: 0 auto;
     }
 
-    .faq-item {
-      background: #faf4e6;
-      border: 2px solid #ded2b6;
-      border-radius: 4px;
+    .quiz-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      margin-bottom: 2rem;
       overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-flag), var(--gold-star));
+      width: 25%;
+      transition: width 0.3s ease;
+    }
+
+    .quiz-question-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      line-height: 1.35;
+    }
+
+    .quiz-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .quiz-opt-btn {
+      background: rgba(15, 16, 21, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      color: var(--text-main);
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quiz-opt-btn:hover {
+      background: rgba(245, 183, 0, 0.1);
+      border-color: var(--gold-star);
+      transform: translateX(6px);
+      color: var(--gold-light);
+    }
+
+    .quiz-opt-badge {
+      font-family: var(--font-display);
+      color: var(--red-flag);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    /* Quiz Result Screen */
+    .quiz-result-view {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .result-badge-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 25px rgba(245, 183, 0, 0.6));
+    }
+
+    .result-role-title {
+      font-family: var(--font-display);
+      font-size: 2.3rem;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .result-role-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================
+       MODAL DE RECRUTAMENTO / JURAMENTO
+       ========================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-box {
+      background: linear-gradient(145deg, #1d202c, #11131a);
+      border: 3px solid var(--gold-star);
+      border-radius: 20px;
+      padding: 2.8rem;
+      max-width: 580px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), var(--shadow-glow-red);
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      color: #fff;
+    }
+
+    .modal-star {
+      font-size: 3rem;
+      color: var(--gold-star);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      text-align: left;
+    }
+
+    .modal-input {
+      background: rgba(10, 11, 15, 0.9);
+      border: 1px solid rgba(245, 183, 0, 0.3);
+      padding: 0.9rem 1.2rem;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
       transition: border-color 0.2s;
     }
 
-    .faq-item:hover {
-      border-color: var(--gold);
+    .modal-input:focus {
+      border-color: var(--gold-star);
+      box-shadow: 0 0 10px rgba(245, 183, 0, 0.3);
     }
 
-    .faq-item.open {
-      border-color: var(--crimson);
-    }
-
-    .faq-trigger {
-      width: 100%;
-      background: transparent;
-      border: none;
-      padding: 20px 24px;
-      text-align: left;
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark-stone);
-      cursor: pointer;
+    .modal-checkbox-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
     }
 
-    .faq-trigger:hover {
-      color: var(--crimson);
+    .modal-checkbox-row input {
+      margin-top: 0.25rem;
+      accent-color: var(--red-flag);
     }
 
-    .faq-arrow {
-      font-size: 18px;
-      color: var(--gold-dark);
-      transition: transform 0.25s ease;
-    }
-
-    .faq-item.open .faq-arrow {
-      transform: rotate(180deg);
-      color: var(--crimson);
-    }
-
-    .faq-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      background: #fffdf9;
-      padding: 0 24px;
-    }
-
-    .faq-item.open .faq-body {
-      max-height: 300px;
-      padding: 16px 24px 24px;
-    }
-
-    .faq-body p {
-      font-size: 19px;
-      color: #3b3530;
-      line-height: 1.55;
-    }
-
-    /* Call to Action Final */
-    .join-section {
-      background: radial-gradient(circle at center, #352c26 0%, #1c1815 100%);
-      color: var(--parchment);
-      padding: 92px 0;
-      border-top: 2px solid var(--gold);
-      position: relative;
-    }
-
-    .join-card {
-      max-width: 840px;
-      margin: 0 auto;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 2px solid var(--gold);
-      padding: 56px 36px;
-      border-radius: 6px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-      position: relative;
-    }
-
-    .steps-list {
-      list-style: none;
-      counter-reset: alc-steps;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      margin: 40px 0 48px;
-      text-align: left;
-    }
-
-    .step-box {
-      counter-increment: alc-steps;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(212, 169, 74, 0.3);
-      padding: 24px 20px;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .step-box::before {
-      content: counter(alc-steps);
-      position: absolute;
-      top: -16px;
-      left: 18px;
-      width: 32px;
-      height: 32px;
-      background: var(--crimson);
-      color: #fff;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      font-family: 'Cinzel', serif;
-      font-weight: 800;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .step-box-title {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--gold-bright);
-      margin-top: 6px;
-      margin-bottom: 8px;
-    }
-
-    .step-box-text {
-      font-size: 17px;
-      color: #e5dac2;
-      line-height: 1.45;
-    }
-
-    /* Toast Notification */
-    .toast-msg {
+    /* ==========================================================
+       TOAST DE NOTIFICAÇÃO DO PARTIDO
+       ========================================================== */
+    .soviet-toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--dark-stone);
-      color: var(--gold-light);
-      border: 1px solid var(--gold);
-      padding: 12px 20px;
-      border-radius: 4px;
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: var(--shadow-lg);
-      transform: translateY(120px);
-      opacity: 0;
-      transition: all 0.3s ease;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, var(--red-deep), #220508);
+      border: 2px solid var(--gold-star);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(198, 26, 41, 0.5);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
       z-index: 9999;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
-    .toast-msg.show {
+
+    .soviet-toast.active {
       transform: translateY(0);
       opacity: 1;
     }
 
-    /* Footer */
-    footer {
-      background: #15110f;
-      color: #a39584;
+    /* ==========================================================
+       RODAPÉ DO COLETIVO
+       ========================================================== */
+    .soviet-footer {
+      background: #08090c;
+      border-top: 2px solid var(--border-soviet);
+      padding: 4rem 1.5rem 2.5rem;
+      position: relative;
+      z-index: 10;
       text-align: center;
-      padding: 44px 24px;
-      font-size: 16px;
-      border-top: 1px solid #332b26;
     }
 
-    .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--gold-bright);
-      margin-bottom: 8px;
+    .footer-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      body {
-        font-size: 19px;
+    .footer-stat-item h4 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--gold-light);
+    }
+
+    .footer-stat-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-creed {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--red-flag);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-legal {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ==========================================================
+       RESPONSIVIDADE (MOBILE / TABLET)
+       ========================================================== */
+    @media (max-width: 960px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding-top: 2.5rem;
+      }
+      .hero-content {
+        align-items: center;
+      }
+      .hero-desc {
+        margin: 0 auto;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .calculator-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
       }
       .nav-links {
         display: none;
       }
-      .hero-section {
-        padding: 40px 0 60px;
+      .tribunal-actions {
+        grid-template-columns: 1fr;
       }
-      .interactive-box {
-        padding: 24px 18px;
-      }
-      .join-card {
-        padding: 36px 20px;
-      }
-      .d20-stage {
-        padding: 36px 18px;
-      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Golden Dust Canvas -->
+  <!-- Ambient Starfield Canvas -->
   <canvas id="particles-canvas"></canvas>
+  <!-- Confetti Canvas for Celebrations -->
+  <canvas id="confetti-canvas"></canvas>
 
-  <!-- Sticky Navbar -->
-  <header class="header-nav" id="top-navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo-badge" title="Aristocracia Larper Comunista">
-        <img src="assets/brasao.jpg" alt="Brasão ALC" class="logo-img">
-        <div class="logo-title">
-          <span>ALC</span>
-          <span class="logo-sub">DESDE 2023</span>
+  <!-- ==========================================================
+       BARRA DE NAVEGAÇÃO REVOLUCIONÁRIA
+       ========================================================== -->
+  <nav class="soviet-nav">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <span class="nav-star-icon">★</span>
+        <div class="nav-title-group">
+          <h1>ALC • SOVIET RIFT</h1>
+          <span>República Socialista da SoloQ</span>
         </div>
       </a>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#manifesto">Manifesto</a></li>
-          <li><a href="#classe-quiz">Criar Personagem</a></li>
-          <li><a href="#d20-destino">D20 do Povo</a></li>
-          <li><a href="#jogos">O Que Fazemos</a></li>
-          <li><a href="#arsenal">Equipamento</a></li>
-          <li><a href="#faq">Dúvidas</a></li>
-        </ul>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="#manifesto">Manifesto</a></li>
+        <li><a href="#calculadora">Mais-Valia</a></li>
+        <li><a href="#tribunal">Tribunal</a></li>
+        <li><a href="#nicks">Nicks</a></li>
+        <li><a href="#quiz">Teste</a></li>
+      </ul>
 
       <div class="nav-actions">
-        <button id="sound-btn" class="sound-toggle-btn" title="Alternar efeitos sonoros" aria-label="Efeitos sonoros">🔊</button>
-        <a href="https://discord.gg/6twJ4WCBk6" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-          <span>DISCORD</span> ⚔️
+        <button class="btn-audio" id="audio-toggle-btn" title="Ouvir o Hino da União Soviética" onclick="toggleAnthem()">
+          <span id="audio-icon">☭</span> <span id="audio-text">Hino da URSS</span>
+        </button>
+        <button class="btn-join" onclick="openRecruitModal()">
+          Alistar-se ☭
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Áudio Oficial do Hino da União Soviética -->
+  <audio id="soviet-anthem-audio" src="assets/hino_urss.mp3" preload="auto"></audio>
+
+  <!-- Player Flutuante do Hino da URSS -->
+  <div class="anthem-floating-bar" id="anthem-floating-bar">
+    <div class="anthem-disc">☭</div>
+    <div class="anthem-info">
+      <strong>Hino da União Soviética (URSS)</strong>
+      <span>Coro do Exército Vermelho • A. Alexandrov</span>
+    </div>
+    <div class="anthem-bars">
+      <div class="anthem-bar"></div>
+      <div class="anthem-bar"></div>
+      <div class="anthem-bar"></div>
+      <div class="anthem-bar"></div>
+    </div>
+    <button class="btn-floating-pause" onclick="toggleAnthem()" id="floating-anthem-btn">⏸ Pausar</button>
+  </div>
+
+  <!-- ==========================================================
+       TICKER DE NOTÍCIAS DE PROPAGANDA DO RIFT
+       ========================================================== -->
+  <div class="propaganda-ticker">
+    <div class="ticker-label">★ PRAVDA DO RIFT</div>
+    <div class="ticker-content" id="ticker-text">
+      🚩 BOLETIM OFICIAL: Confiscado o Gume do Infinito de Yasuo 0/10 por apropriação indébita de recursos da bot lane! &nbsp;&nbsp;•&nbsp;&nbsp;
+      🌾 PLANO QUINQUENAL: A meta de wards colocadas por Suportes superou o plano de Zaun em 420%! &nbsp;&nbsp;•&nbsp;&nbsp;
+      ⚔️ DECRETO DO COMITÊ: O buff do Barão agora é patrimônio público inalienável dos 5 proletários da equipe! &nbsp;&nbsp;•&nbsp;&nbsp;
+      ⚖️ TRIBUNAL POPULAR: Smurf de elo alto condenado a 100 partidas consecutivas de Yuumi sem assistência! &nbsp;&nbsp;•&nbsp;&nbsp;
+      🚩 Gank não é favor, é solidariedade histórica entre a classe trabalhadora!
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       HERO SECTION
+       ========================================================== -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>★</span> COMITÊ CENTRAL DO SUMMONER'S RIFT
+      </div>
+      <h2 class="hero-title">
+        Proletários de todas as lanes, <span class="highlight-red">Univos!</span><br>
+        A <span class="highlight-gold">Revolução</span> começou no Rift.
+      </h2>
+      <p class="hero-desc">
+        Abaixo a burguesia dos <strong>ADCs egoístas</strong> que acumulam 300 de farm enquanto os <strong>Suportes vivem na miséria</strong> comprando pink ward! É hora de <strong>socializar o ouro</strong>, coletivizar os dragões e punir a tirania da SoloQ!
+      </p>
+      <div class="hero-cta-group">
+        <a href="#calculadora" class="btn-hero-primary" onclick="playChimeSound()">
+          <span>☭</span> Socializar a Mais-Valia
         </a>
+        <a href="#tribunal" class="btn-hero-secondary" onclick="playClickSound()">
+          <span>⚖️</span> Tribunal do Povo
+        </a>
+        <button class="btn-hero-secondary" onclick="toggleAnthem()" style="border-color: var(--gold-star); color: var(--gold-light);">
+          <span>🚩</span> Hino da URSS
+        </button>
+      </div>
+    </div>
+
+    <!-- Brasão Oficial Interativo -->
+    <div class="hero-emblem-wrapper">
+      <div class="emblem-glow-bg"></div>
+      <div class="hero-emblem-card" id="emblem-card" onclick="triggerEmblemSpeech()">
+        <div class="emblem-image-container">
+          <img src="assets/brasao.jpg" alt="Brasão ALC" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80';">
+        </div>
+        <div class="emblem-title">Aristocracia Larper Comunista</div>
+        <div class="emblem-motto">"Omnis Minion Proletarius Est"</div>
+        <div class="emblem-pill">Clique para saudar o Comitê ★</div>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container">
-        
-        <div class="hero-badge-tag">
-          <span>⚔️ GUILDA BRASILEIRA DE LARP & RPG 🚩</span>
+  <!-- ==========================================================
+       O MANIFESTO DO RIFT
+       ========================================================== -->
+  <section class="section-wrap" id="manifesto">
+    <div class="section-header">
+      <span class="section-tag">★ Teses de Abril da SoloQ ★</span>
+      <h2 class="section-title">O Manifesto do Rift Coletivo</h2>
+      <p class="section-subtitle">Cinco decretos fundamentais promulgados pelo Comitê Central para desmantelar a opressão burguesa das ranqueadas.</p>
+    </div>
+
+    <div class="manifesto-grid">
+      <!-- Card 1 -->
+      <div class="manifesto-card">
+        <div class="card-number">01</div>
+        <div class="card-icon">🌾</div>
+        <h3 class="card-title">Abolição da Mais-Valia do ADC</h3>
+        <p class="card-text">
+          O farm das tropas não é mérito pessoal do atirador, mas o suor coletivo do Suporte que tomou poke para garantir o último golpe. O ouro dos canhões deve ser dividido equitativamente.
+        </p>
+        <div class="card-quote">"De cada um conforme suas habilidades, a cada um conforme suas wards."</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="manifesto-card">
+        <div class="card-number">02</div>
+        <div class="card-icon">🐉</div>
+        <h3 class="card-title">Coletivização dos Objetivos</h3>
+        <p class="card-text">
+          O Arauto, os Dragões Elementais e o Barão Na'Shor são meios de produção universais. O buff não pertence ao Jungler; ele é uma conquista da massa trabalhadora de Summoner's Rift.
+        </p>
+        <div class="card-quote">"A Alma do Dragão pertence à cooperativa proletária."</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="manifesto-card">
+        <div class="card-number">03</div>
+        <div class="card-icon">🚩</div>
+        <h3 class="card-title">Solidariedade de Classe nos Ganks</h3>
+        <p class="card-text">
+          Se o camarada da Top Lane estiver sob cerco imperialista do Renekton inimigo, o Jungler tem o dever moral de intervir. Acumular monstros neutros enquanto aliados perecem é traição.
+        </p>
+        <div class="card-quote">"Gank não é misericórdia, é pacto de Varsóvia."</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="manifesto-card">
+        <div class="card-number">04</div>
+        <div class="card-icon">⚖️</div>
+        <h3 class="card-title">Expropriação dos Smurfs</h3>
+        <p class="card-text">
+          Burgueses de Grão-Mestre criando contas no Ferro 4 para humilhar o proletariado honesto que joga depois do trabalho serão sumariamente julgados e banidos para as minas de sal.
+        </p>
+        <div class="card-quote">"Todo poder aos elos baixos conscientes."</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="manifesto-card">
+        <div class="card-number">05</div>
+        <div class="card-icon">👁️</div>
+        <h3 class="card-title">Revolução da Visão Proletária</h3>
+        <p class="card-text">
+          A escuridão do mapa é terreno fértil para a emboscada reacionária. Todos os cinco jogadores devem portar e fincar Sentinelas de Controle. A cegueira tática é contrarrevolucionária!
+        </p>
+        <div class="card-quote">"75 de ouro por uma pink ward é o preço da liberdade."</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="manifesto-card">
+        <div class="card-number">06</div>
+        <div class="card-icon">🔨</div>
+        <h3 class="card-title">Reforma do KDA Individualista</h3>
+        <p class="card-text">
+          O KDA é uma ilusão capitalista criada para dividir o time. O Suporte 0/11/24 que se sacrificou para o Mid laner escapar é o verdadeiro herói comendador da República!
+        </p>
+        <div class="card-quote">"Não existem mortes inúteis quando a vitória é coletiva."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       FERRAMENTA 1: CALCULADORA DE MAIS-VALIA
+       ========================================================== -->
+  <section class="section-wrap" id="calculadora">
+    <div class="section-header">
+      <span class="section-tag">★ Instrumento de Justiça Econômica ★</span>
+      <h2 class="section-title">Calculadora de Mais-Valia do Rift</h2>
+      <p class="section-subtitle">Descubra quanto ouro o ADC burguês acumulou ilegalmente às custas do Suporte e redistributed tudo com um único clique!</p>
+    </div>
+
+    <div class="calculator-container">
+      <div class="calc-controls">
+        <!-- Input 1: Minions -->
+        <div class="calc-input-group">
+          <div class="calc-label-row">
+            <span>🌾 Minions acumulados pelo ADC:</span>
+            <span class="val-display" id="display-cs">180 CS</span>
+          </div>
+          <input type="range" min="20" max="360" value="180" class="calc-slider" id="input-cs" oninput="updateCalculator()">
         </div>
 
-        <div class="hero-emblem-wrap" id="emblem-container">
-          <div class="emblem-halo"></div>
-          <img src="assets/brasao.jpg" 
-               id="hero-emblem-img"
-               alt="Brasão da Aristocracia Larper Comunista: cavaleiro e aventureiro ladeando um escudo com foice e martelo" 
-               class="hero-emblem">
+        <!-- Input 2: Kills do Atirador -->
+        <div class="calc-input-group">
+          <div class="calc-label-row">
+            <span>⚔️ Abates monopolizados (Kills):</span>
+            <span class="val-display" id="display-kills">7 Kills</span>
+          </div>
+          <input type="range" min="0" max="25" value="7" class="calc-slider" id="input-kills" oninput="updateCalculator()">
         </div>
 
-        <h1 class="hero-title">
-          Nobres de armadura,
-          <span>camaradas de espírito.</span>
-        </h1>
+        <!-- Input 3: Pink Wards do Suporte -->
+        <div class="calc-input-group">
+          <div class="calc-label-row">
+            <span>👁️ Pinks compradas pelo Suporte na miséria:</span>
+            <span class="val-display" id="display-pinks">6 Pinks</span>
+          </div>
+          <input type="range" min="0" max="18" value="6" class="calc-slider" id="input-pinks" oninput="updateCalculator()">
+        </div>
 
-        <p class="hero-subtitle">
-          O grupo brasileiro de LARP onde a cavalaria encontra a luta de classes. Espadas de espuma, castelos imaginários e assembleia democrática no fim de cada campanha.
+        <button class="btn-socialize" onclick="socializeFarmAction()">
+          <span>☭</span> SOCIALIZAR O FARM AGORA!
+        </button>
+      </div>
+
+      <!-- Resultados -->
+      <div class="calc-results-box">
+        <div class="results-watermark">☭</div>
+        <div class="result-row">
+          <span class="result-title">Ouro Total Acumulado pelo ADC:</span>
+          <span class="result-value gold" id="res-total-gold">5.700 G</span>
+        </div>
+        <div class="result-row">
+          <span class="result-title">Mais-Valia Expropriada da Bot Lane:</span>
+          <span class="result-value red" id="res-surplus">3.420 G</span>
+        </div>
+        <div class="result-row">
+          <span class="result-title">Cota Justa de Cada Camarada (÷ 5):</span>
+          <span class="result-value gold" id="res-split">1.140 G</span>
+        </div>
+        <div class="verdict-badge" id="res-verdict">
+          ⚠️ ALERTA: O ADC está vivendo como um oligarca de Piltover! Expropriação imediata recomendada!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       FERRAMENTA 2: O TRIBUNAL REVOLUCIONÁRIO DO RIFT
+       ========================================================== -->
+  <section class="section-wrap" id="tribunal">
+    <div class="section-header">
+      <span class="section-tag">★ Juizado Popular Extraordinário ★</span>
+      <h2 class="section-title">Tribunal Revolucionário do Rift</h2>
+      <p class="section-subtitle">Você foi nomeado Juiz Comissário. Analise os crimes contra a ordem coletivista e sentencie os acusados!</p>
+    </div>
+
+    <div class="tribunal-wrapper">
+      <div class="tribunal-header-badge">PROCESSO REVOLUCIONÁRIO Nº <span id="case-id">1917</span></div>
+
+      <div class="case-card" id="case-card">
+        <div class="case-number" id="case-category">CRIME: INDIVIDUALISMO TÁTICO</div>
+        <h3 class="case-accused" id="case-name">Yasuo (0/11/1)</h3>
+        <p class="case-crime" id="case-description">
+          "Deu split push descalço na bot lane sem visão enquanto os quatro aliados defendiam o Nexus, alegando que precisava 'fechar o terceiro item de crítico'."
         </p>
 
-        <div class="hero-cta-group">
-          <a href="https://discord.gg/6twJ4WCBk6" target="_blank" rel="noopener" class="btn btn-primary">
-            ALISTE-SE NO DISCORD 🚩
-          </a>
-          <a href="#classe-quiz" class="btn btn-gold">
-            DESCUBRA SUA CLASSE 📜
-          </a>
-          <a href="#d20-destino" class="btn btn-secondary">
-            ROLAR D20 DO POVO 🎲
-          </a>
-        </div>
-
-        <!-- Quick Highlight Numbers -->
-        <div class="quick-stats-bar">
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Horizontal e Democrático</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">0 R$</div>
-            <div class="stat-label">Para Entrar e Jogar</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Safe</div>
-            <div class="stat-label">Espadas de Espuma Macia</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Desde 2023</div>
-            <div class="stat-label">Campanhas e Tavernas</div>
-          </div>
-        </div>
-
+        <!-- Dynamic Stamp Overlay -->
+        <div class="tribunal-stamp" id="tribunal-stamp">CONDENADO</div>
       </div>
-    </section>
 
-    <!-- Princípios Fundamentais (Os 3 Mandamentos) -->
-    <section class="principles-strip">
-      <div class="container">
-        <div class="section-header" style="margin-bottom: 36px;">
-          <div class="eyebrow gold">NOSSAS LEIS FUNDAMENTAIS</div>
-          <h2 class="section-title light">A Trindade da Távola Igualitária</h2>
-        </div>
+      <div class="tribunal-actions">
+        <button class="btn-verdict gulag-btn" onclick="judgeCase('gulag')">
+          <span>🔨</span> GULAG DA SOLOQ
+          <small>10 partidas de ARAM sem flash</small>
+        </button>
 
-        <div class="principles-grid">
-          <div class="principle-card">
-            <div class="principle-num">I</div>
-            <h3 class="principle-title">Todos jogam, ninguém é súdito</h3>
-            <p style="font-size: 18px; color: #f2e7d3; margin-top: 10px;">
-              Dos reis e duques fictícios aos servos da gleba, fora do roleplay todos temos voz ativa igual na assembleia.
-            </p>
-          </div>
+        <button class="btn-verdict reeducate-btn" onclick="judgeCase('reeducate')">
+          <span>🌾</span> REEDUCAÇÃO NO MODO TREINO
+          <small>100 horas de treino de last hit</small>
+        </button>
 
-          <div class="principle-card">
-            <div class="principle-num">II</div>
-            <h3 class="principle-title">Segurança e respeito acima do personagem</h3>
-            <p style="font-size: 18px; color: #f2e7d3; margin-top: 10px;">
-              Toque seguro (boffer safe), consentimento narrativo e acolhimento rigoroso para todas as pessoas.
-            </p>
-          </div>
-
-          <div class="principle-card">
-            <div class="principle-num">III</div>
-            <h3 class="principle-title">A alegria é coletiva, o riso também</h3>
-            <p style="font-size: 18px; color: #f2e7d3; margin-top: 10px;">
-              Jogamos para construir momentos épicos e engraçados juntos, não para alimentar egos individuais.
-            </p>
-          </div>
-        </div>
+        <button class="btn-verdict hero-btn" onclick="judgeCase('hero')">
+          <span>🎖️</span> MEDALHA DE LENIN
+          <small>Absolvido pela audácia proletária</small>
+        </button>
       </div>
-    </section>
 
-    <!-- Manifesto Section -->
-    <section id="manifesto" class="manifesto-section">
-      <div class="container">
-        <div class="manifesto-parchment">
-          <div class="eyebrow gold">MANIFESTO OFICIAL</div>
-          <h2 class="section-title light" style="margin-bottom: 24px;">Unitas · Ludus · Revolutio</h2>
-          
-          <p class="manifesto-text">
-            Somos uma aristocracia que aboliu a si mesma, e se diverte nisso. Interpretamos reis, cavaleiros, camponeses e conspiradores, todos sentados à mesma mesa redonda, sem trono no topo.
-          </p>
-          <p class="manifesto-text" style="font-size: 25px; font-style: italic; color: var(--gold-light);">
-            "<span class="manifesto-highlight">União</span> para jogar junto, <span class="manifesto-highlight">jogo</span> como forma de encontro, <span class="manifesto-highlight">revolução</span> como enredo (e como piada interna)."
-          </p>
-          
-          <div style="margin-top: 36px;">
-            <a href="#entrar" class="btn btn-gold btn-sm">CONHEÇA NOSSA CORTE 🛡️</a>
-          </div>
-        </div>
+      <div class="tribunal-score-bar">
+        <div>Casos Julgados: <strong id="stats-cases">0</strong></div>
+        <div>Camaradas no Gulag: <strong id="stats-gulag">0</strong></div>
+        <div>Índice de Retidão Socialista: <strong id="stats-loyalty">100%</strong></div>
       </div>
-    </section>
-
-    <!-- INTERACTIVE SECTION 1: Quiz / Gerador de Personagem -->
-    <section id="classe-quiz" class="section-wrap">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">INTERATIVO & DIVERTIDO</div>
-          <h2 class="section-title">Descubra sua Classe na ALC</h2>
-          <p class="section-desc">Responda a 3 perguntas rápidas e descubra sua verdadeira vocação na corte revolucionária medieval!</p>
-        </div>
-
-        <div class="interactive-box" id="quiz-container">
-          
-          <!-- Indicator Steps -->
-          <div class="quiz-step-indicator">
-            <div class="step-dot active" id="dot-1">1</div>
-            <div class="step-dot" id="dot-2">2</div>
-            <div class="step-dot" id="dot-3">3</div>
-          </div>
-
-          <!-- Step 1 -->
-          <div class="quiz-step-content" id="step-1">
-            <h3 class="quiz-question-title">1. No calor da batalha de LARP, qual é sua tática favorita?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizAnswer(1, 'A')">
-                <div class="option-icon">⚔️</div>
-                <div class="option-title">Linha de Frente</div>
-                <div class="option-desc">Espada de espuma empunhada, escudo erguido e peito aberto pela causa comum!</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(1, 'B')">
-                <div class="option-icon">📜</div>
-                <div class="option-title">Discurso & Feitiçaria</div>
-                <div class="option-desc">Lança encantamentos verbais, panfletos mágicos e confunde os lordes inimigos!</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(1, 'C')">
-                <div class="option-icon">🪕</div>
-                <div class="option-title">Inspiração & Alaúde</div>
-                <div class="option-desc">Canta hinos de coragem, zomba dos opressores e mantém a moral dos camaradas no ápice!</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(1, 'D')">
-                <div class="option-icon">🧪</div>
-                <div class="option-title">Alquimia & Logística</div>
-                <div class="option-desc">Distribui poções de mana (suco gelado), repara escudos e garante suprimentos a todos!</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="quiz-step-content" id="step-2" style="display: none;">
-            <h3 class="quiz-question-title">2. Como você age durante a Assembleia Geral pós-jogo?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizAnswer(2, 'A')">
-                <div class="option-icon">📢</div>
-                <div class="option-title">O Tribuno do Povo</div>
-                <div class="option-desc">Defende com paixão regras justas, mais eventos ao ar livre e votos proporcionais.</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(2, 'B')">
-                <div class="option-icon">🎭</div>
-                <div class="option-title">O Dramaturgo</div>
-                <div class="option-desc">Propõe plots mirabolantes com traições shakespearianas e reviravoltas trágicas.</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(2, 'C')">
-                <div class="option-icon">🍺</div>
-                <div class="option-title">O Mestre da Taverna</div>
-                <div class="option-desc">Garante que a resenha continue, trazendo lanches, hidromel e risadas até tarde.</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(2, 'D')">
-                <div class="option-icon">🛡️</div>
-                <div class="option-title">O Guardião da Paz</div>
-                <div class="option-desc">Lembra a todos sobre segurança, descanso físico e verifica se os novatos foram acolhidos.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="quiz-step-content" id="step-3" style="display: none;">
-            <h3 class="quiz-question-title">3. O que você faria se encontrasse um baú cheio de ouro no jogo?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizAnswer(3, 'A')">
-                <div class="option-icon">⚖️</div>
-                <div class="option-title">Socialização Imediata</div>
-                <div class="option-desc">Divide igualmente entre toda a guilda e compra suprimentos para a próxima batalha.</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(3, 'B')">
-                <div class="option-icon">🗡️</div>
-                <div class="option-title">Investimento em Armamento</div>
-                <div class="option-desc">Forja espadas de espuma épicas e novas armaduras acolchoadas para os recrutas.</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(3, 'C')">
-                <div class="option-icon">🎪</div>
-                <div class="option-title">O Grande Festival Popular</div>
-                <div class="option-desc">Financia uma festa lendária na corte com torneio de piadas e duelo de bardos!</div>
-              </div>
-              <div class="quiz-option-card" onclick="selectQuizAnswer(3, 'D')">
-                <div class="option-icon">🗺️</div>
-                <div class="option-title">Mapear Novos Territórios</div>
-                <div class="option-desc">Usa os fundos para explorar novos parques, florestas e castelos para jogar LARP.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Result Card -->
-          <div class="result-parchment" id="quiz-result">
-            <div class="result-badge" id="res-badge">⚔️</div>
-            <div class="result-class-name" id="res-class">Cavaleiro da Guarda Vermelha</div>
-            <div class="result-title-proletario" id="res-title">"Duque Proletário da Linha de Frente"</div>
-            <p class="result-lore" id="res-lore">
-              Sua espada de espuma não conhece recuo! Quando a corneta soa, você é o primeiro a avançar, garantindo que nenhum companheiro fique para trás.
-            </p>
-            
-            <div class="result-stats-bar">
-              <span class="res-stat">Ataque com Espuma: <b id="stat-atk">+9</b></span>
-              <span class="res-stat">Oratória Popular: <b id="stat-ora">+8</b></span>
-              <span class="res-stat">Carisma de Taverna: <b id="stat-car">+10</b></span>
-              <span class="res-stat">Espírito de Coletividade: <b id="stat-col">+10</b></span>
-            </div>
-
-            <div class="result-actions">
-              <button class="btn btn-primary btn-sm" onclick="copyResultText()">
-                <span>COPIAR FICHA PRO DISCORD</span> 📋
-              </button>
-              <button class="btn btn-secondary btn-sm" onclick="restartQuiz()">
-                REFAZER TESTE 🔄
-              </button>
-              <a href="https://discord.gg/6twJ4WCBk6" target="_blank" rel="noopener" class="btn btn-gold btn-sm">
-                APRESENTAR-SE NO DISCORD 🚩
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- INTERACTIVE SECTION 2: D20 do Destino Proletário -->
-    <section id="d20-destino" class="section-wrap" style="padding-top: 10px;">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">SORTE & LUTA DE CLASSES</div>
-          <h2 class="section-title">O D20 do Destino Proletário</h2>
-          <p class="section-desc">Clique no dado ou no botão para invocar o destino! Teste sua sorte nos dados de 20 faces da ALC.</p>
-        </div>
-
-        <div class="d20-stage">
-          
-          <div class="d20-dice-wrapper" onclick="rollD20()">
-            <div class="d20-die" id="d20-visual">
-              <span class="d20-number" id="d20-val">20</span>
-              <span class="d20-symbol">ALC</span>
-            </div>
-          </div>
-
-          <div class="d20-result-banner" id="d20-banner">
-            <div class="d20-result-title" id="d20-title">Role o D20!</div>
-            <div class="d20-result-desc" id="d20-desc">Clique no dado ou no botão abaixo para rolar o destino da revolução.</div>
-          </div>
-
-          <div>
-            <button class="btn btn-gold" id="roll-button" onclick="rollD20()">
-              <span>ROLAR D20</span> 🎲
-            </button>
-          </div>
-
-          <!-- History -->
-          <div class="d20-history-wrap" id="d20-history">
-            <!-- Recent chips appended here -->
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Três Frentes de Batalha (O que fazemos) -->
-    <section id="jogos" class="section-wrap">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">O QUE FAZEMOS</div>
-          <h2 class="section-title">Três Frentes de Batalha</h2>
-          <p class="section-desc">De combates épicos em parques a assembleias democráticas regadas a pão e histórias.</p>
-        </div>
-
-        <div class="fronts-grid">
-          
-          <article class="front-card">
-            <div class="front-icon">⚔️</div>
-            <h3 class="front-title">Campanhas de LARP</h3>
-            <p class="front-text">
-              Aventuras ao vivo com fantasia medieval, intriga de corte e conflito de classes. Fantasia, armadura de espuma e personagem a caráter em parques e sítios.
-            </p>
-            <div style="margin-top: auto; padding-top: 12px;">
-              <span style="font-size: 14px; font-family: 'Cinzel', serif; font-weight: 700; color: var(--gold-dark);">
-                ✦ ENCONTROS MENSAIS
-              </span>
-            </div>
-          </article>
-
-          <article class="front-card">
-            <div class="front-icon">🎲</div>
-            <h3 class="front-title">Mesas e Dados</h3>
-            <p class="front-text">
-              Para quem também ama RPG de mesa clássico: sessões regulares de D&D, Tormenta, sistemas autorais e one-shots que alimentam o enredo do campo vivo.
-            </p>
-            <div style="margin-top: auto; padding-top: 12px;">
-              <span style="font-size: 14px; font-family: 'Cinzel', serif; font-weight: 700; color: var(--gold-dark);">
-                ✦ ONLINE & PRESENCIAL
-              </span>
-            </div>
-          </article>
-
-          <article class="front-card">
-            <div class="front-icon">🏛️</div>
-            <h3 class="front-title">Assembleias Democráticas</h3>
-            <p class="front-text">
-              Decisões do grupo tomadas por consenso ou voto direto: próximas campanhas, regras da casa, eventos e festas. Aqui o voto de todos vale rigorosamente igual.
-            </p>
-            <div style="margin-top: auto; padding-top: 12px;">
-              <span style="font-size: 14px; font-family: 'Cinzel', serif; font-weight: 700; color: var(--gold-dark);">
-                ✦ HORIZONTALIDADE TOTAL
-              </span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Arsenal & Equipamento Seguro -->
-    <section id="arsenal" class="section-wrap" style="background: rgba(184, 144, 58, 0.06); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">ARSENAL DO PROLETARIADO</div>
-          <h2 class="section-title">Manual de Equipamento & Segurança</h2>
-          <p class="section-desc">Nosso combate é épico e seguro. Conheça as armas de espuma, trajes e convenções da guilda.</p>
-        </div>
-
-        <div class="arsenal-box">
-          <div class="arsenal-nav">
-            <button class="arsenal-tab-btn active" onclick="switchArsenalTab('armas', this)">
-              ⚔️ Armas Boffer
-            </button>
-            <button class="arsenal-tab-btn" onclick="switchArsenalTab('trajes', this)">
-              🛡️ Armaduras & Trajes
-            </button>
-            <button class="arsenal-tab-btn" onclick="switchArsenalTab('seguranca', this)">
-              📜 Protocolo Safe
-            </button>
-          </div>
-
-          <!-- Tab 1: Armas -->
-          <div class="arsenal-content-panel active" id="tab-armas">
-            <div class="equipment-grid">
-              <div class="equip-item">
-                <div class="equip-badge">Acolchoamento Seguro</div>
-                <h4 class="equip-name">Espadas & Sabres de Espuma</h4>
-                <p class="equip-desc">Feitas com núcleo flexível de fibra e revestimento de EVA de alta densidade. Golpe suave sem machucar nem cansar.</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Defesa Coletiva</div>
-                <h4 class="equip-name">Escudos de Madeira Leve / EVA</h4>
-                <p class="equip-desc">Bordas 100% encapadas com espuma. Usados tanto por nobres espadachins quanto por lanceiros da resistência.</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Magia & Projéteis</div>
-                <h4 class="equip-name">Spellballs & Flechas Safe</h4>
-                <p class="equip-desc">Bolinhas de tecido macio para lançar magias e flechas com ponteira gigante de espuma almofadada.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab 2: Trajes -->
-          <div class="arsenal-content-panel" id="tab-trajes">
-            <div class="equipment-grid">
-              <div class="equip-item">
-                <div class="equip-badge">Novatos & Camponeses</div>
-                <h4 class="equip-name">Túnicas & Roupas Simples</h4>
-                <p class="equip-desc">Uma camisa folgada, calça escura e cinto de couro já te colocam no clima de fantasia medieval com zero gasto!</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Artesanato</div>
-                <h4 class="equip-name">Armaduras de EVA & Couro</h4>
-                <p class="equip-desc">Visuais fantásticos feitos com placas leves e confortáveis que resistem ao calor e garantem mobilidade total.</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Acervo Comunitário</div>
-                <h4 class="equip-name">Empréstimo da Guilda</h4>
-                <p class="equip-desc">Não tem equipamento? O grupo empresta armas, mantos e tabardos para os novatos jogarem no primeiro dia!</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab 3: Seguranca -->
-          <div class="arsenal-content-panel" id="tab-seguranca">
-            <div class="equipment-grid">
-              <div class="equip-item">
-                <div class="equip-badge">Regra de Ouro</div>
-                <h4 class="equip-name">Golpe Toque-Safe</h4>
-                <p class="equip-desc">O objetivo nunca é machucar. Golpes na cabeça, pescoço e virilha são estritamente proibidos em qualquer combate.</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Comunicação</div>
-                <h4 class="equip-name">Palavra de Parada (HOLD)</h4>
-                <p class="equip-desc">Se alguém tropeçar, perder o óculos ou precisar de pausa, basta gritar "PAROU" e o jogo congela imediatamente.</p>
-              </div>
-              <div class="equip-item">
-                <div class="equip-badge">Ambiente Saudável</div>
-                <h4 class="equip-name">Respeito & Inclusão</h4>
-                <p class="equip-desc">Tolerância zero para qualquer assédio ou preconceito. A corte é acolhedora para iniciantes de todas as idades e identidades.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section-wrap">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">TIRA-DÚVIDAS</div>
-          <h2 class="section-title">Manual do Calouro Larper</h2>
-          <p class="section-desc">Tudo o que você precisa saber antes de empunhar sua primeira espada de espuma.</p>
-        </div>
-
-        <div class="faq-accordion">
-          
-          <div class="faq-item open">
-            <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Nunca joguei LARP antes. Posso participar?</span>
-              <span class="faq-arrow">▼</span>
-            </button>
-            <div class="faq-body">
-              <p>
-                <strong>Com certeza!</strong> Grande parte dos nossos membros nunca tinha praticado LARP antes de nos conhecer. Todo encontro conta com recepção de calouros, explicação das regras de combate e acolhimento narrativo.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Preciso comprar fantasia ou espada cara para ir?</span>
-              <span class="faq-arrow">▼</span>
-            </button>
-            <div class="faq-body">
-              <p>
-                <strong>Não!</strong> Não gaste dinheiro antes de experimentar. Você pode vir com roupas confortáveis (calça escura e tênis/bota) e nós emprestamos espadas de espuma e adereços no próprio local para você jogar à vontade.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Vocês são mesmo comunistas ou monarquistas?</span>
-              <span class="faq-arrow">▼</span>
-            </button>
-            <div class="faq-body">
-              <p>
-                Somos um grupo de amigos e jogadores de RPG apaixonados por fantasia medieval que adotou uma temática satírica e bem-humorada ("uma aristocracia que aboliu a si mesma"). Dentro do jogo interpretamos nobres, cavaleiros e rebeldes; na vida real prezamos pela amizade, igualdade e democracia interna.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Como acontecem os encontros e onde ocorrem?</span>
-              <span class="faq-arrow">▼</span>
-            </button>
-            <div class="faq-body">
-              <p>
-                Nossos encontros são divulgados com antecedência dentro do nosso <strong>Discord oficial</strong>, ocorrendo geralmente em parques públicos, áreas verdes ou sítios, além das mesas online de RPG que rolam durante a semana.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Quanto custa fazer parte da ALC?</span>
-              <span class="faq-arrow">▼</span>
-            </button>
-            <div class="faq-body">
-              <p>
-                <strong>Zero reais!</strong> A entrada e a participação em nossos encontros abertos regulares é 100% gratuita e comunitária.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Call to Action / Como Entrar -->
-    <section id="entrar" class="join-section">
-      <div class="container">
-        <div class="join-card">
-          <div class="eyebrow gold">ALISTAMENTO ABERTO</div>
-          <h2 class="section-title light" style="font-size: clamp(32px, 5vw, 48px);">Junte-se à Corte do Povo</h2>
-          <p style="font-size: 22px; color: #e1d6be; max-width: 650px; margin: 0 auto;">
-            A távola está posta e há um lugar reservado para você. Dê o primeiro passo em direção às suas aventuras mais memoráveis.
-          </p>
-
-          <ol class="steps-list">
-            <li class="step-box">
-              <h4 class="step-box-title">1. Chame o Grupo</h4>
-              <p class="step-box-text">Entre no nosso Discord oficial e dê um "Olá, camaradas!" no canal de apresentações.</p>
-            </li>
-            <li class="step-box">
-              <h4 class="step-box-title">2. Crie seu Personagem</h4>
-              <p class="step-box-text">Cavaleiro, barda, mago, camponesa ou diplomata: escolha seu arquétipo preferido.</p>
-            </li>
-            <li class="step-box">
-              <h4 class="step-box-title">3. Apareça no Encontro</h4>
-              <p class="step-box-text">Venha como estiver. A gente cuida da espada de espuma e das boas-vindas!</p>
-            </li>
-          </ol>
-
-          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
-            <a href="https://discord.gg/6twJ4WCBk6" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 16px; padding: 0 38px;">
-              <span>ENTRAR NO SERVIDOR DO DISCORD</span> ⚔️
-            </a>
-            <button class="btn btn-secondary" onclick="copyDiscordLink()">
-              COPIAR CONVITE 🔗
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Toast message -->
-  <div id="toast" class="toast-msg">Mensagem copiada com sucesso!</div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-logo">ARISTOCRACIA LARPER COMUNISTA</div>
-      <p style="margin: 0; color: #8e8071;">
-        Unitas · Ludus · Revolutio · Desde 2023 · Brasil
-      </p>
-      <p style="font-size: 13px; color: #695d52; margin-top: 10px;">
-        LARP, RPG e convívio democrático. Espadas de espuma, camaradagem real.
-      </p>
     </div>
+  </section>
+
+  <!-- ==========================================================
+       FERRAMENTA 3: GERADOR DE NICKS REVOLUCIONÁRIOS
+       ========================================================== -->
+  <section class="section-wrap" id="nicks">
+    <div class="section-header">
+      <span class="section-tag">★ Propaganda Ideológica de Invocador ★</span>
+      <h2 class="section-title">Gerador de Nicks Comunistas para o LoL</h2>
+      <p class="section-subtitle">Cause pânico moral na burguesia da SoloQ com uma identidade autenticamente revolucionária.</p>
+    </div>
+
+    <div class="generator-card">
+      <div class="nick-display-box">
+        <div class="nick-name" id="current-nick">Karl_Marksman</div>
+        <div class="nick-lore" id="current-nick-lore">"O espectro que ronda a bot lane com 100% de penetração de armadura."</div>
+      </div>
+
+      <div class="generator-actions">
+        <button class="btn-gen" onclick="generateNewNick()">
+          <span>🎲</span> Sortear Outro Nick
+        </button>
+        <button class="btn-copy-nick" onclick="copyCurrentNick()">
+          <span>📋</span> Copiar para a Riot Client
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       FERRAMENTA 4: TESTE DE CLASSE REVOLUCIONÁRIA (QUIZ)
+       ========================================================== -->
+  <section class="section-wrap" id="quiz">
+    <div class="section-header">
+      <span class="section-tag">★ Censo Vocacional do Partido ★</span>
+      <h2 class="section-title">Qual é o seu Papel na Revolução?</h2>
+      <p class="section-subtitle">Responda a quatro questões cruciais e receba a designação oficial do Comitê Central.</p>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quiz-progress"></div>
+      </div>
+
+      <!-- Tela de Pergunta -->
+      <div class="quiz-question-box" id="quiz-box">
+        <h3 id="quiz-question-text">1. O Jungler inimigo está emboscando sua bot lane em 4v2. O que você faz?</h3>
+        <div class="quiz-options-list" id="quiz-options-container">
+          <!-- Gerado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Tela de Resultado -->
+      <div class="quiz-result-view" id="quiz-result">
+        <div class="result-badge-icon" id="quiz-res-icon">🛡️</div>
+        <h3 class="result-role-title" id="quiz-res-title">O Suporte Mártir Proletário</h3>
+        <p class="result-role-desc" id="quiz-res-desc">
+          Você não hesita em se jogar debaixo da torre inimiga para o seu carregador viver. Seu ouro é reinvestido integralmente na visão do mapa. Você é o pilar moral da República Socialista do Rift!
+        </p>
+        <button class="btn-hero-primary" onclick="restartQuiz()">
+          <span>🔄</span> Refazer Teste
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       MODAL DE ALISTAMENTO
+       ========================================================== -->
+  <div class="modal-overlay" id="recruit-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeRecruitModal()">&times;</button>
+      <div class="modal-star">★</div>
+      <h3 class="modal-title">Alistamento no Partido</h3>
+      <p class="modal-desc">Preencha sua cédula de registro para ingressar nos quadros da vanguarda da ALC.</p>
+
+      <form class="modal-form" onsubmit="submitRecruit(event)">
+        <input type="text" class="modal-input" placeholder="Seu Nick no LoL (Ex: CamaradaBraum)" required id="recruit-nick">
+        <input type="text" class="modal-input" placeholder="Sua Elo / Divisão Atual (Ex: Prata Consciente)" required id="recruit-elo">
+        
+        <div class="modal-checkbox-row">
+          <input type="checkbox" id="recruit-oath" required>
+          <label for="recruit-oath">
+            Juro solenemente nunca culpar o Suporte, sempre ajudar no Aronguejo e dividir os canhões da wave com a classe trabalhadora.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-hero-primary" style="justify-content: center; width: 100%; margin-top: 0.5rem;">
+          <span>🚩</span> ASSINAR CARTEIRINHA DO PARTIDO
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="soviet-toast" id="toast-el">
+    <span style="font-size: 1.4rem;">🚩</span>
+    <span id="toast-msg">Mensagem oficial do Partido!</span>
+  </div>
+
+  <!-- ==========================================================
+       RODAPÉ DO COLETIVO
+       ========================================================== -->
+  <footer class="soviet-footer">
+    <div class="footer-stats-grid">
+      <div class="footer-stat-item">
+        <h4 id="stat-minions">19.170.400</h4>
+        <p>Minions Socializados</p>
+      </div>
+      <div class="footer-stat-item">
+        <h4>1.917</h4>
+        <p>Gumes Confiscados</p>
+      </div>
+      <div class="footer-stat-item">
+        <h4>100%</h4>
+        <p>Barons Coletivizados</p>
+      </div>
+      <div class="footer-stat-item">
+        <h4>0</h4>
+        <p>ADCs Impunes</p>
+      </div>
+    </div>
+
+    <div class="footer-creed">
+      ★ ALIANÇA LENINO-CHALLENGER • VITÓRIA AO COLETIVO! ★
+    </div>
+    <p class="footer-legal">
+      Este site é uma sátira bem-humorada unindo a estética e retórica comunista clássica com as situações cotidianas de League of Legends.<br>
+      Riot Games, League of Legends e Summoner's Rift são marcas registradas da Riot Games Inc. Todos os direitos reservados.
+    </p>
   </footer>
 
-  <!-- Script: Interactive Mechanics, Audio API & Visual Effects -->
+  <!-- ==========================================================
+       JAVASCRIPT REVOLUCIONÁRIO DE ALTA PERFORMANCE
+       ========================================================== -->
   <script>
-    // --- Sound Synthesis (Web Audio API - Zero External Dependencies) ---
-    let soundEnabled = true;
+    /* ==========================================
+       SISTEMA DE ÁUDIO SINTETIZADO (WEB AUDIO API)
+       ========================================== */
     let audioCtx = null;
+    let isAudioPlaying = false;
+    let anthemTimer = null;
 
-    function getAudioContext() {
+    function initAudio() {
       if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) audioCtx = new AudioContext();
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
-      if (audioCtx && audioCtx.state === 'suspended') {
+      if (audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
-      return audioCtx;
     }
 
-    const soundBtn = document.getElementById('sound-btn');
-    soundBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      soundBtn.textContent = soundEnabled ? '🔊' : '🔇';
-      showToast(soundEnabled ? 'Efeitos sonoros ativados!' : 'Efeitos sonoros silenciados.');
-      if (soundEnabled) playChimeSound();
-    });
-
-    function playClickSound() {
-      if (!soundEnabled) return;
+    function playNote(freq, type = 'sine', duration = 0.2, gainVal = 0.15) {
+      if (!audioCtx) return;
       try {
-        const ctx = getAudioContext();
-        if (!ctx) return;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(320, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(140, ctx.currentTime + 0.08);
-        gain.gain.setValueAtTime(0.18, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(audioCtx.destination);
+
         osc.start();
-        osc.stop(ctx.currentTime + 0.08);
-      } catch(e) {}
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
     }
 
-    function playDiceRollSound() {
-      if (!soundEnabled) return;
-      try {
-        const ctx = getAudioContext();
-        if (!ctx) return;
-        for (let i = 0; i < 4; i++) {
-          setTimeout(() => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(200 + Math.random() * 260, ctx.currentTime);
-            gain.gain.setValueAtTime(0.15, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + 0.06);
-          }, i * 110);
+    // Efeitos sonoros
+    function playClickSound() {
+      initAudio();
+      playNote(440, 'triangle', 0.08, 0.12);
+    }
+
+    function playChimeSound() {
+      initAudio();
+      playNote(523.25, 'sine', 0.15, 0.15); // C5
+      setTimeout(() => playNote(659.25, 'sine', 0.18, 0.15), 80); // E5
+      setTimeout(() => playNote(783.99, 'sine', 0.25, 0.18), 160); // G5
+      setTimeout(() => playNote(1046.50, 'sine', 0.4, 0.22), 240); // C6
+    }
+
+    function playGavelSound() {
+      initAudio();
+      playNote(110, 'sawtooth', 0.25, 0.35); // Grave de impacto
+      setTimeout(() => playNote(85, 'square', 0.35, 0.3), 30);
+    }
+
+    // Áudio Oficial do Hino da União Soviética
+    const sovietAudio = document.getElementById('soviet-anthem-audio');
+
+    // Melodia Triunfal Soviética 8-bit com Web Audio (Fallback)
+    const anthemNotes = [
+      { f: 261.63, d: 0.4 }, // C4
+      { f: 392.00, d: 0.6 }, // G4
+      { f: 440.00, d: 0.3 }, // A4
+      { f: 493.88, d: 0.3 }, // B4
+      { f: 523.25, d: 0.6 }, // C5
+      { f: 392.00, d: 0.3 }, // G4
+      { f: 440.00, d: 0.3 }, // A4
+      { f: 349.23, d: 0.6 }, // F4
+      { f: 392.00, d: 0.3 }, // G4
+      { f: 440.00, d: 0.3 }, // A4
+      { f: 493.88, d: 0.6 }, // B4
+      { f: 523.25, d: 0.8 }, // C5
+    ];
+
+    function toggleAnthem() {
+      const btn = document.getElementById('audio-toggle-btn');
+      const btnText = document.getElementById('audio-text');
+      const btnIcon = document.getElementById('audio-icon');
+      const floatingBar = document.getElementById('anthem-floating-bar');
+      const floatingBtn = document.getElementById('floating-anthem-btn');
+
+      if (sovietAudio && !sovietAudio.paused) {
+        // Pausar áudio oficial
+        sovietAudio.pause();
+        if (btn) btn.classList.remove('playing');
+        if (btnIcon) btnIcon.textContent = "☭";
+        if (btnText) btnText.textContent = "Hino da URSS";
+        if (floatingBar) floatingBar.classList.remove('active');
+        if (floatingBtn) floatingBtn.textContent = "▶ Retomar";
+        showToast("⏸️ Hino da União Soviética pausado.");
+      } else if (isAudioPlaying) {
+        // Pausar fallback sintetizado
+        isAudioPlaying = false;
+        clearTimeout(anthemTimer);
+        if (btn) btn.classList.remove('playing');
+        if (btnIcon) btnIcon.textContent = "☭";
+        if (btnText) btnText.textContent = "Hino da URSS";
+        if (floatingBar) floatingBar.classList.remove('active');
+        showToast("⏸️ Hino pausado.");
+      } else {
+        // Tentar tocar o áudio oficial em MP3
+        if (sovietAudio) {
+          sovietAudio.play().then(() => {
+            if (btn) btn.classList.add('playing');
+            if (btnIcon) btnIcon.textContent = "🔊";
+            if (btnText) btnText.textContent = "Pausar Hino";
+            if (floatingBar) floatingBar.classList.add('active');
+            if (floatingBtn) floatingBtn.textContent = "⏸ Pausar";
+            showToast("🚩 TOCANDO: Hino da União Soviética (Coro do Exército Vermelho)!");
+          }).catch((err) => {
+            console.warn("Reprodução automática via arquivo bloqueada, ativando sintetizador:", err);
+            initAudio();
+            isAudioPlaying = true;
+            if (btn) btn.classList.add('playing');
+            if (btnIcon) btnIcon.textContent = "🔊";
+            if (btnText) btnText.textContent = "Pausar Hino";
+            if (floatingBar) floatingBar.classList.add('active');
+            showToast("🚩 Hino da União Soviética sintetizado!");
+            playAnthemLoop(0);
+          });
+        } else {
+          initAudio();
+          isAudioPlaying = true;
+          if (btn) btn.classList.add('playing');
+          playAnthemLoop(0);
         }
-      } catch(e) {}
+      }
     }
 
-    function playChimeSound(isEpic = false) {
-      if (!soundEnabled) return;
-      try {
-        const ctx = getAudioContext();
-        if (!ctx) return;
-        const freqs = isEpic ? [440, 554, 659, 880] : [523.25, 659.25];
-        freqs.forEach((freq, idx) => {
-          setTimeout(() => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, ctx.currentTime);
-            gain.gain.setValueAtTime(0.18, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + 0.4);
-          }, idx * 120);
-        });
-      } catch(e) {}
-    }
-
-    // --- Toast Functionality ---
-    function showToast(text) {
-      const toast = document.getElementById('toast');
-      toast.textContent = text;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3200);
-    }
-
-    function copyDiscordLink() {
-      const link = 'https://discord.gg/6twJ4WCBk6';
-      navigator.clipboard.writeText(link).then(() => {
-        playChimeSound();
-        showToast('Convite do Discord copiado! Te vemos na assembleia!');
-      }).catch(() => {
-        window.open(link, '_blank');
+    if (sovietAudio) {
+      sovietAudio.addEventListener('ended', () => {
+        const btn = document.getElementById('audio-toggle-btn');
+        const btnText = document.getElementById('audio-text');
+        const btnIcon = document.getElementById('audio-icon');
+        const floatingBar = document.getElementById('anthem-floating-bar');
+        if (btn) btn.classList.remove('playing');
+        if (btnIcon) btnIcon.textContent = "☭";
+        if (btnText) btnText.textContent = "Hino da URSS";
+        if (floatingBar) floatingBar.classList.remove('active');
       });
     }
 
-    // --- Interactive Quiz (Descubra sua Classe) ---
-    const quizAnswers = { 1: null, 2: null, 3: null };
+    function playAnthemLoop(index) {
+      if (!isAudioPlaying) return;
+      const note = anthemNotes[index % anthemNotes.length];
+      playNote(note.f, 'sawtooth', note.d, 0.09);
 
-    const classesInfo = [
-      {
-        badge: '⚔️',
-        name: 'Cavaleiro da Guarda Vermelha',
-        title: '"Duque Proletário da Linha de Frente"',
-        lore: 'Armadura reluzente e escudo do povo! Você é quem absorve os golpes e puxa o coro revolucionário no campo de batalha.',
-        atk: '+9', ora: '+8', car: '+8', col: '+10'
-      },
-      {
-        badge: '📜',
-        name: 'Mago Agitador da Távola',
-        title: '"Arquimago do Comitê de Feitiçaria"',
-        lore: 'Seus pergaminhos contêm teses incendiárias e magias de proteção coletiva. Um discurso seu desmantela o exército do feudo inimigo.',
-        atk: '+7', ora: '+10', car: '+9', col: '+9'
-      },
-      {
-        badge: '🪕',
-        name: 'Bardo da Internacional',
-        title: '"Barão das Canções do Povo"',
-        lore: 'Munido de alaúde e rimas afiadas, você transforma derrotas em epopéias e vitórias em banquetes lendários cantados por gerações.',
-        atk: '+6', ora: '+9', car: '+10', col: '+10'
-      },
-      {
-        badge: '🧪',
-        name: 'Alquimista Coletivista',
-        title: '"Mestre dos Elixires da Assembleia"',
-        lore: 'Ninguém passa sede ou cai por falta de estamina. Suas poções revigoram a tropa e suas espadas de espuma são obras de arte.',
-        atk: '+8', ora: '+7', car: '+9', col: '+10'
-      }
+      anthemTimer = setTimeout(() => {
+        playAnthemLoop((index + 1) % anthemNotes.length);
+      }, note.d * 1000 + 40);
+    }
+
+    // Toast Oficial
+    let toastTimeout = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast-el');
+      const msgEl = document.getElementById('toast-msg');
+      msgEl.textContent = msg;
+      el.classList.add('active');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        el.classList.remove('active');
+      }, 3500);
+    }
+
+    // Brasão Speech
+    const speeches = [
+      "★ 'Minions do mundo, uni-vos!' — Comitê da ALC",
+      "★ 'A burguesia treme quando o Suporte fecha Shurelya!'",
+      "★ 'Glória àqueles que wardam o Píton e o Dragão!'",
+      "★ 'O KDA passa, a vitória do time fica! Viva a ALC!'"
     ];
+    let speechIdx = 0;
+    function triggerEmblemSpeech() {
+      playChimeSound();
+      showToast(speeches[speechIdx % speeches.length]);
+      speechIdx++;
+    }
 
-    function selectQuizAnswer(step, choice) {
-      playClickSound();
-      quizAnswers[step] = choice;
+    /* ==========================================
+       CALCULADORA DE MAIS-VALIA
+       ========================================== */
+    function updateCalculator() {
+      const cs = parseInt(document.getElementById('input-cs').value);
+      const kills = parseInt(document.getElementById('input-kills').value);
+      const pinks = parseInt(document.getElementById('input-pinks').value);
 
-      if (step < 3) {
-        // Go to next step
-        document.getElementById(`step-${step}`).style.display = 'none';
-        document.getElementById(`dot-${step}`).classList.remove('active');
-        document.getElementById(`dot-${step}`).classList.add('completed');
+      document.getElementById('display-cs').textContent = `${cs} CS`;
+      document.getElementById('display-kills').textContent = `${kills} Kills`;
+      document.getElementById('display-pinks').textContent = `${pinks} Pinks`;
 
-        const next = step + 1;
-        document.getElementById(`step-${next}`).style.display = 'block';
-        document.getElementById(`dot-${next}`).classList.add('active');
+      // Cálculo temático
+      const goldFromCS = cs * 21;
+      const goldFromKills = kills * 300;
+      const totalADC = goldFromCS + goldFromKills;
+      
+      // Mais-valia: 60% do total foi trabalho cooperativo não remunerado
+      const surplus = Math.floor(totalADC * 0.60);
+      const perPlayer = Math.floor(totalADC / 5);
+
+      document.getElementById('res-total-gold').textContent = `${totalADC.toLocaleString('pt-BR')} G`;
+      document.getElementById('res-surplus').textContent = `${surplus.toLocaleString('pt-BR')} G`;
+      document.getElementById('res-split').textContent = `${perPlayer.toLocaleString('pt-BR')} G`;
+
+      const verdictEl = document.getElementById('res-verdict');
+      if (cs > 250 || kills > 10) {
+        verdictEl.innerHTML = "🚨 <strong>CRIME ECONÔMICO GRAVÍSSIMO:</strong> Ouro suficiente para comprar 3 Gumes! Tribunal convocado!";
+      } else if (pinks === 0) {
+        verdictEl.innerHTML = "👁️ <strong>TRAIÇÃO DA VISÃO:</strong> Zero pink wards compradas! O ADC é um sabotador imperialista!";
       } else {
-        // Show result
-        document.getElementById('step-3').style.display = 'none';
-        document.getElementById('dot-3').classList.add('completed');
-        calculateQuizResult();
+        verdictEl.innerHTML = "⚠️ <strong>DESIGUALDADE RELEVANTE:</strong> O Suporte está sem bota de velocidade enquanto o ADC brilha no ouro.";
       }
     }
 
-    function calculateQuizResult() {
-      // Deterministic fun selection
-      const a1 = quizAnswers[1] || 'A';
-      const a2 = quizAnswers[2] || 'A';
+    function socializeFarmAction() {
+      playChimeSound();
+      triggerConfetti();
+      showToast("🎉 MAIS-VALIA SOCIALIZADA! Cada jogador recebeu sua quota justa!");
+    }
+
+    /* ==========================================
+       TRIBUNAL REVOLUCIONÁRIO
+       ========================================== */
+    const tribunalCases = [
+      {
+        id: 1917,
+        accused: "Yasuo (0/11/1)",
+        crime: "CRIME: INDIVIDUALISMO TÁTICO",
+        desc: "Deu split push descalço na bot lane sem visão enquanto os 4 aliados defendiam o Nexus, alegando que 'precisava fechar o terceiro item de crítico'."
+      },
+      {
+        id: 1922,
+        accused: "Draven (14/3/0)",
+        crime: "CRIME: CAPITALISMO SELVAGEM",
+        desc: "Recusou-se a doar a kill do Barão roubado e chamou o Suporte de 'escravo de cura' após o aliado salvar sua vida usando Flash e Exaustão."
+      },
+      {
+        id: 1945,
+        accused: "Master Yi (Farming)",
+        crime: "CRIME: SABOTAGEM AGRÁRIA",
+        desc: "Ficou na jungle por 28 minutos batendo em Krugs enquanto o time sofria três Dragon Souls consecutivos sem contestação."
+      },
+      {
+        id: 1989,
+        accused: "Smurf Vayne de Piltover",
+        crime: "CRIME: EXPLORAÇÃO DO PROLETARIADO",
+        desc: "Mestre jogando em conta Ferro 4 mandando emote de maestria 7 após solar um camponês que acabou de chegar do trabalho de 8 horas."
+      },
+      {
+        id: 2026,
+        accused: "Zed (Mão Fechada)",
+        crime: "CRIME: SONEGAÇÃO DE SENTINELA",
+        desc: "Terminou partida de 45 minutos com Placar de Visão igual a 4. Possuía 1.200 de ouro no inventário e se recusou a comprar uma pink de 75."
+      }
+    ];
+
+    let currentCaseIdx = 0;
+    let casesJudged = 0;
+    let gulagCount = 0;
+
+    function renderCase() {
+      const c = tribunalCases[currentCaseIdx % tribunalCases.length];
+      document.getElementById('case-id').textContent = c.id;
+      document.getElementById('case-category').textContent = c.crime;
+      document.getElementById('case-name').textContent = c.accused;
+      document.getElementById('case-description').textContent = `"${c.desc}"`;
       
-      let index = 0;
-      if (a1 === 'A') index = 0;
-      else if (a1 === 'B') index = 1;
-      else if (a1 === 'C') index = 2;
-      else index = 3;
+      const stamp = document.getElementById('tribunal-stamp');
+      stamp.className = "tribunal-stamp";
+    }
 
-      const profile = classesInfo[index];
-      document.getElementById('res-badge').textContent = profile.badge;
-      document.getElementById('res-class').textContent = profile.name;
-      document.getElementById('res-title').textContent = profile.title;
-      document.getElementById('res-lore').textContent = profile.lore;
-      document.getElementById('stat-atk').textContent = profile.atk;
-      document.getElementById('stat-ora').textContent = profile.ora;
-      document.getElementById('stat-car').textContent = profile.car;
-      document.getElementById('stat-col').textContent = profile.col;
+    function judgeCase(verdictType) {
+      playGavelSound();
+      const stamp = document.getElementById('tribunal-stamp');
 
+      stamp.className = `tribunal-stamp ${verdictType}`;
+      if (verdictType === 'gulag') {
+        stamp.textContent = "GULAG!";
+        gulagCount++;
+        showToast("🔨 CONDENADO AO GULAG DA SOLOQ!");
+      } else if (verdictType === 'reeducate') {
+        stamp.textContent = "REEDUCAÇÃO!";
+        showToast("🌾 ENVIADO PARA REEDUCAÇÃO NO MODO TREINO!");
+      } else {
+        stamp.textContent = "HERÓI DO POVO!";
+        showToast("🎖️ MEDALHA CONCEDIDA PELA CORAGEM OPERÁRIA!");
+      }
+
+      stamp.classList.add('active');
+      casesJudged++;
+
+      document.getElementById('stats-cases').textContent = casesJudged;
+      document.getElementById('stats-gulag').textContent = gulagCount;
+      const loyalty = Math.min(100, Math.max(75, 100 - (casesJudged % 5)));
+      document.getElementById('stats-loyalty').textContent = `${loyalty}%`;
+
+      setTimeout(() => {
+        currentCaseIdx++;
+        renderCase();
+      }, 1400);
+    }
+
+    /* ==========================================
+       GERADOR DE NICKS REVOLUCIONÁRIOS
+       ========================================= */
+    const sovietNicks = [
+      { nick: "Karl_Marksman", lore: "O atirador que redistribui o crítico entre todas as tropas operárias." },
+      { nick: "Vladimir_Lenin_Mid", lore: "Especialista em revoluções rápidas e ganks centrais fulminantes." },
+      { nick: "Mao_Tse_Thresh", lore: "A foice que puxa os burgueses direto para a lanterna proletária." },
+      { nick: "Che_Guevarongue", lore: "Guerrilheiro incansável do rio superior em busca de objetivos." },
+      { nick: "Trotsky_Iceborn", lore: "Golpeia com a Manopla de Gelo revolucionária em movimento permanente." },
+      { nick: "Rosa_Luxem_Blitz", lore: "Puxão firme da classe trabalhadora rompendo as barreiras de Zaun." },
+      { nick: "Mais_Valia_Top", lore: "Não dá kill, só acumula glória para o bem comum do time." },
+      { nick: "Uniao_Sovi_Ekko", lore: "Voltando no tempo para impedir a privatização do primeiro Dragão." },
+      { nick: "Proletario_Sem_Flash", lore: "Não gasta feitiço em vaidades: caminha a passos firmes rumo ao Nexus." },
+      { nick: "Fidel_Castr_Olaf", lore: "Imune a qualquer controle de grupo e sanções burguesas quando ativa o R." },
+      { nick: "Baron_Coletivo", lore: "Nenhum monstro neutro será explorado individualmente nesta partida." },
+      { nick: "Comissario_Braum", lore: "O escudo do povo protegendo os desvalidos da bot lane contra o poke opressor." }
+    ];
+
+    let nickIndex = 0;
+
+    function generateNewNick() {
+      playClickSound();
+      nickIndex = (nickIndex + 1) % sovietNicks.length;
+      const data = sovietNicks[nickIndex];
+      const nameEl = document.getElementById('current-nick');
+      const loreEl = document.getElementById('current-nick-lore');
+
+      nameEl.style.transform = "scale(0.85)";
+      setTimeout(() => {
+        nameEl.textContent = data.nick;
+        loreEl.textContent = `"${data.lore}"`;
+        nameEl.style.transform = "scale(1)";
+      }, 150);
+    }
+
+    function copyCurrentNick() {
+      playChimeSound();
+      const currentNick = document.getElementById('current-nick').textContent;
+      navigator.clipboard.writeText(currentNick).then(() => {
+        showToast(`📋 Nick "${currentNick}" copiado para a sua área de transferência!`);
+      }).catch(() => {
+        showToast(`📋 Copie o nick: ${currentNick}`);
+      });
+    }
+
+    /* ==========================================
+       QUIZ DE CLASSE REVOLUCIONÁRIA
+       ========================================== */
+    const quizData = [
+      {
+        question: "1. O Jungler inimigo está emboscando sua bot lane em 4v2. O que você faz?",
+        options: [
+          { text: "Me coloco na frente do puxão para o meu ADC viver, mesmo morrendo heroicamente.", role: "support" },
+          { text: "Ligo o Teleporte na ward da moita e venho de Sion atropelando todos os opressores.", role: "tank" },
+          { text: "Aproveito a distração para roubar o Arauto e invadir a selva inimiga pelo povo.", role: "jungler" },
+          { text: "Fico no Mid farmando e calculando friamente a rotação de tropas.", role: "strategist" }
+        ]
+      },
+      {
+        question: "2. Seu time acaba de conquistar o Dragão Ancião. Qual é a ordem do dia?",
+        options: [
+          { text: "Avançar os três inibidores em formação fechada de infantaria pesada.", role: "tank" },
+          { text: "Distribuir Sentinelas de Controle em cada centímetro da selva inimiga.", role: "support" },
+          { text: "Iniciar o cerco final e dar call para ninguém dar chase desnecessário.", role: "strategist" },
+          { text: "Caçar os remanescentes burgueses que tentavam fugir para a fonte.", role: "jungler" }
+        ]
+      },
+      {
+        question: "3. O que a Sentinela de Controle (Pink Ward) representa para você?",
+        options: [
+          { text: "O farol da iluminação revolucionária que dissipa a mentira e a emboscada.", role: "support" },
+          { text: "Um dever cívico obrigatório de 75 de ouro que compro em toda volta à base.", role: "strategist" },
+          { text: "Isca perfeita para esperar o inimigo tentar quebrar e emboscá-lo.", role: "jungler" },
+          { text: "O escudo ideológico do nosso território coletivo.", role: "tank" }
+        ]
+      },
+      {
+        question: "4. Ao final da vitória, o que você escreve no chat da partida?",
+        options: [
+          { text: "'GGWP camaradas, vitória da coletividade e da disciplina tática!'", role: "strategist" },
+          { text: "'Honrem o Suporte, ele tomou todo o dano por nós!'", role: "tank" },
+          { text: "'A mais-valia foi resgatada com sucesso.'", role: "support" },
+          { text: "'A selva é pública, viva a revolução de Runeterra!'", role: "jungler" }
+        ]
+      }
+    ];
+
+    let currentQ = 0;
+    const roleScores = { support: 0, tank: 0, jungler: 0, strategist: 0 };
+
+    const roleResults = {
+      support: {
+        icon: "🛡️",
+        title: "O Suporte Mártir Proletário",
+        desc: "Você não hesita em sacrificar seu KDA pelo bem comum. O ouro que você ganha vira visão no mapa e proteção para os fracos. Você é o coração sacrificial da Revolução!"
+      },
+      tank: {
+        icon: "🔨",
+        title: "O Tanque Vanguardista Coletivo",
+        desc: "Uma muralha inquebrável da infantaria pesada! Você absorve o impacto da opressão burguesa sem recuar um milímetro. Seus aliados avançam seguros sob sua couraça de aço!"
+      },
+      jungler: {
+        icon: "🌾",
+        title: "O Camponês Revolucionário da Selva",
+        desc: "Nenhum Aronguejo ou Dragão escapa da sua vigilância. Seus ganks não são favores: são missões de solidariedade histórica para erguer as lanes em dificuldades!"
+      },
+      strategist: {
+        icon: "🚩",
+        title: "O Comissário Estrategista da SoloQ",
+        desc: "Mente brilhante do Comitê Central! Você enxerga o Summoner's Rift como um grande tabuleiro histórico. Suas pings no mapa são diretrizes científicas infalíveis para a vitória!"
+      }
+    };
+
+    function renderQuizQuestion() {
+      const q = quizData[currentQ];
+      document.getElementById('quiz-progress').style.width = `${((currentQ + 1) / quizData.length) * 100}%`;
+      document.getElementById('quiz-question-text').textContent = q.question;
+
+      const optsContainer = document.getElementById('quiz-options-container');
+      optsContainer.innerHTML = q.options.map((opt, i) => `
+        <button class="quiz-opt-btn" onclick="selectQuizOption('${opt.role}')">
+          <span class="quiz-opt-badge">${['A', 'B', 'C', 'D'][i]}</span>
+          <span>${opt.text}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectQuizOption(role) {
+      playClickSound();
+      roleScores[role] = (roleScores[role] || 0) + 1;
+      currentQ++;
+
+      if (currentQ < quizData.length) {
+        renderQuizQuestion();
+      } else {
+        showQuizResult();
+      }
+    }
+
+    function showQuizResult() {
+      playChimeSound();
+      triggerConfetti();
+
+      // Encontrar maior pontuação
+      let bestRole = 'support';
+      let maxScore = -1;
+      for (const [r, s] of Object.entries(roleScores)) {
+        if (s > maxScore) {
+          maxScore = s;
+          bestRole = r;
+        }
+      }
+
+      const resData = roleResults[bestRole];
+      document.getElementById('quiz-box').style.display = 'none';
       document.getElementById('quiz-result').style.display = 'block';
-      playChimeSound(true);
+
+      document.getElementById('quiz-res-icon').textContent = resData.icon;
+      document.getElementById('quiz-res-title').textContent = resData.title;
+      document.getElementById('quiz-res-desc').textContent = resData.desc;
     }
 
     function restartQuiz() {
       playClickSound();
-      quizAnswers[1] = null;
-      quizAnswers[2] = null;
-      quizAnswers[3] = null;
-
+      currentQ = 0;
+      for (let k in roleScores) roleScores[k] = 0;
+      document.getElementById('quiz-box').style.display = 'block';
       document.getElementById('quiz-result').style.display = 'none';
-      document.getElementById('step-1').style.display = 'block';
-      document.getElementById('step-2').style.display = 'none';
-      document.getElementById('step-3').style.display = 'none';
-
-      ['dot-1', 'dot-2', 'dot-3'].forEach((id, i) => {
-        const dot = document.getElementById(id);
-        dot.classList.remove('active', 'completed');
-        if (i === 0) dot.classList.add('active');
-      });
+      renderQuizQuestion();
     }
 
-    function copyResultText() {
-      const cls = document.getElementById('res-class').textContent;
-      const tit = document.getElementById('res-title').textContent;
-      const text = `⚔️ Minha Ficha na Aristocracia Larper Comunista (ALC):\nClasse: ${cls}\nTítulo: ${tit}\n"Nobres de armadura, camaradas de espírito!"\nJunte-se a nós: https://discord.gg/6twJ4WCBk6`;
-      navigator.clipboard.writeText(text).then(() => {
-        playChimeSound();
-        showToast('Ficha copiada! Cole no canal de apresentações do Discord!');
-      });
+    /* ==========================================
+       MODAL DE RECRUTAMENTO
+       ========================================== */
+    function openRecruitModal() {
+      playClickSound();
+      document.getElementById('recruit-modal').classList.add('open');
     }
 
-    // --- Interactive D20 Roller ---
-    const d20Outcomes = {
-      20: {
-        title: "CRÍTICO GLORIOSO! (20)",
-        desc: "A corte real abdicou por unanimidade! Todos os camponeses ganham espada de espuma +5 e banquete de hidromel liberado!",
-        crit: 'crit-20'
-      },
-      19: {
-        title: "Discurso Arrebatador! (19)",
-        desc: "Sua oratória foi tão convincente que até os espiões do feudo inimigo se aliaram à sua causa.",
-        crit: 'normal'
-      },
-      18: {
-        title: "Investida Perfeita! (18)",
-        desc: "Seu floreio com espada de espuma desviou três ataques seguidos e garantiu aplausos da torcida.",
-        crit: 'normal'
-      },
-      17: {
-        title: "Pacto de Solidariedade! (17)",
-        desc: "Você divide sua poção de hidromel com um novato e ambos ganham vantagem moral pelo resto da campanha.",
-        crit: 'normal'
-      },
-      16: {
-        title: "Tática Impecável! (16)",
-        desc: "Sua formação de escudos de EVA segurou toda a horda inimiga na entrada da ponte imaginária.",
-        crit: 'normal'
-      },
-      15: {
-        title: "Assembleia Extraordinária! (15)",
-        desc: "Você convence a guilda a votar a favor de um lanche coletivo antes do próximo combate. Sucesso absoluto!",
-        crit: 'normal'
-      },
-      14: {
-        title: "Trovador Inspirado! (14)",
-        desc: "Sua sátira rimada sobre os impostos do barão fez até o mestre de jogo rir e conceder um ponto de inspiração.",
-        crit: 'normal'
-      },
-      13: {
-        title: "Esquiva Graciosa! (13)",
-        desc: "Você deu uma pirueta e escapou de um golpe de espada de espuma, parecendo um guerreiro veterano.",
-        crit: 'normal'
-      },
-      12: {
-        title: "Acordo de Cavalheiros! (12)",
-        desc: "Um duelo tenso termina em aperto de mão honroso e ambos se tornam aliados para a próxima batalha.",
-        crit: 'normal'
-      },
-      11: {
-        title: "Toque Seguro! (11)",
-        desc: "Seu golpe encaixou perfeitamente no braço do oponente seguindo todas as regras de segurança boffer.",
-        crit: 'normal'
-      },
-      10: {
-        title: "Paz Armada! (10)",
-        desc: "O combate ficou tão equilibrado que ambos decidem fazer uma pausa tática para beber água na taverna.",
-        crit: 'normal'
-      },
-      9: {
-        title: "Barganha de Feira! (9)",
-        desc: "Você quase convence o armeiro a te dar uma adaga extra de espuma, mas ele pede duas canções em troca.",
-        crit: 'normal'
-      },
-      8: {
-        title: "Equilíbrio Tenso! (8)",
-        desc: "O terreno escorregadio do parque quase te derruba, mas você se apoia no escudo e mantém a pose.",
-        crit: 'normal'
-      },
-      7: {
-        title: "Feitiço com Sotaque! (7)",
-        desc: "Você gaguejou ao invocar o raio mágico, mas os adversários ficaram tão confusos que recuaram mesmo assim.",
-        crit: 'normal'
-      },
-      6: {
-        title: "Vento Forte! (6)",
-        desc: "Uma rajada de vento levou seu chapéu de bardo embora. Prioridade da cena: resgatar o chapéu!",
-        crit: 'normal'
-      },
-      5: {
-        title: "Duelo Dramático! (5)",
-        desc: "Sua encenação de ferimento foi digna de novela das nove: você caiu dramaticamente no gramado macio.",
-        crit: 'normal'
-      },
-      4: {
-        title: "Espada Desalinhada! (4)",
-        desc: "Sua espada de espuma acertou o galho da árvore em vez do oponente. A árvore agradece o carinho.",
-        crit: 'normal'
-      },
-      3: {
-        title: "Capa Enroscada! (3)",
-        desc: "Sua capa heroica enroscou no arbusto durante a retirada tática, gerando gargalhadas amigáveis de todos.",
-        crit: 'normal'
-      },
-      2: {
-        title: "Greve Técnica! (2)",
-        desc: "Sua espada de espuma precisa de uma fita adesiva reforçada. Tempo técnico chamado para reparos da guilda!",
-        crit: 'normal'
-      },
-      1: {
-        title: "FALHA CRÍTICA CÔMICA! (1)",
-        desc: "Você gritou 'Pela Revolução!', tropeçou na própria bainha e caiu sentado num monte de folhas secas. Mas ganhou aplausos e apoio moral de todo mundo!",
-        crit: 'crit-1'
+    function closeRecruitModal() {
+      document.getElementById('recruit-modal').classList.remove('open');
+    }
+
+    function submitRecruit(e) {
+      e.preventDefault();
+      playChimeSound();
+      triggerConfetti();
+
+      const nick = document.getElementById('recruit-nick').value;
+      const elo = document.getElementById('recruit-elo').value;
+
+      closeRecruitModal();
+      showToast(`⭐ CAMARADA ${nick.toUpperCase()} (${elo}) REGISTRADO NO COMITÊ!`);
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('recruit-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'recruit-modal') closeRecruitModal();
+    });
+
+    /* ==========================================
+       CONFETTI DE CELEBRAÇÃO REVOLUCIONÁRIA
+       ========================================== */
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confettiCtx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+    let isConfettiRunning = false;
+
+    function resizeConfetti() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeConfetti);
+    resizeConfetti();
+
+    function triggerConfetti() {
+      confettiParticles = [];
+      const colors = ['#f5b700', '#c61a29', '#ffd859', '#ffffff', '#ff3344'];
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+          y: window.innerHeight / 2,
+          vx: (Math.random() - 0.5) * 16,
+          vy: -Math.random() * 14 - 4,
+          size: Math.random() * 9 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.38,
+          alpha: 1
+        });
       }
-    };
+      if (!isConfettiRunning) {
+        isConfettiRunning = true;
+        renderConfetti();
+      }
+    }
 
-    let isRolling = false;
-    const rollHistory = [];
+    function renderConfetti() {
+      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      let alive = false;
 
-    function rollD20() {
-      if (isRolling) return;
-      isRolling = true;
-      playDiceRollSound();
+      confettiParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotSpeed;
+        p.alpha -= 0.009;
 
-      const die = document.getElementById('d20-visual');
-      const numDisplay = document.getElementById('d20-val');
-      const titleDisplay = document.getElementById('d20-title');
-      const descDisplay = document.getElementById('d20-desc');
-      const rollBtn = document.getElementById('roll-button');
-
-      die.classList.add('rolling');
-      rollBtn.disabled = true;
-
-      // Shuffle numbers during roll
-      let interval = setInterval(() => {
-        numDisplay.textContent = Math.floor(Math.random() * 20) + 1;
-      }, 70);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        const finalValue = Math.floor(Math.random() * 20) + 1;
-        numDisplay.textContent = finalValue;
-        die.classList.remove('rolling');
-        rollBtn.disabled = false;
-        isRolling = false;
-
-        const outcome = d20Outcomes[finalValue];
-        titleDisplay.textContent = outcome.title;
-        descDisplay.textContent = outcome.desc;
-
-        if (finalValue === 20) {
-          playChimeSound(true);
-        } else if (finalValue === 1) {
-          playClickSound();
-        } else {
-          playClickSound();
+        if (p.alpha > 0) {
+          alive = true;
+          confettiCtx.save();
+          confettiCtx.globalAlpha = p.alpha;
+          confettiCtx.translate(p.x, p.y);
+          confettiCtx.rotate((p.rotation * Math.PI) / 180);
+          confettiCtx.fillStyle = p.color;
+          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.4);
+          confettiCtx.restore();
         }
-
-        // Add chip to history
-        addRollHistory(finalValue, outcome.crit);
-      }, 1000);
-    }
-
-    function addRollHistory(val, critType) {
-      rollHistory.unshift({ val, critType });
-      if (rollHistory.length > 7) rollHistory.pop();
-
-      const container = document.getElementById('d20-history');
-      container.innerHTML = rollHistory.map(item => `
-        <span class="d20-chip ${item.critType}">D20: ${item.val}</span>
-      `).join('');
-    }
-
-    // --- Arsenal Tab Switching ---
-    function switchArsenalTab(tabId, btn) {
-      playClickSound();
-      document.querySelectorAll('.arsenal-tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.arsenal-content-panel').forEach(p => p.classList.remove('active'));
-
-      btn.classList.add('active');
-      const panel = document.getElementById(`tab-${tabId}`);
-      if (panel) panel.classList.add('active');
-    }
-
-    // --- FAQ Toggle ---
-    function toggleFaq(btn) {
-      playClickSound();
-      const item = btn.closest('.faq-item');
-      item.classList.toggle('open');
-    }
-
-    // --- 3D Tilt on Hero Emblem ---
-    const emblemContainer = document.getElementById('emblem-container');
-    const emblemImg = document.getElementById('hero-emblem-img');
-
-    if (emblemContainer && emblemImg) {
-      emblemContainer.addEventListener('mousemove', (e) => {
-        const rect = emblemContainer.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        const rotateX = (-y / rect.height) * 22;
-        const rotateY = (x / rect.width) * 22;
-        emblemImg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
       });
 
-      emblemContainer.addEventListener('mouseleave', () => {
-        emblemImg.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-      });
-
-      emblemImg.addEventListener('click', () => {
-        playChimeSound();
-        showToast('⚔️ Unitas · Ludus · Revolutio! Viva a ALC!');
-      });
+      if (alive) {
+        requestAnimationFrame(renderConfetti);
+      } else {
+        isConfettiRunning = false;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
     }
 
-    // --- Subtle Ambient Gold Particles ---
-    const canvas = document.getElementById('particles-canvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = window.innerWidth;
-      let height = canvas.height = window.innerHeight;
+    /* ==========================================
+       PARTÍCULAS AMBIENTES (ESTRELAS & FAÍSCAS)
+       ========================================== */
+    const bgCanvas = document.getElementById('particles-canvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let bgParticles = [];
 
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
+    function resizeBg() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeBg);
+    resizeBg();
 
-      const particles = [];
-      const particleCount = Math.min(30, Math.floor(window.innerWidth / 40));
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 2.2 + 0.6,
-          speedX: (Math.random() - 0.5) * 0.4,
-          speedY: -Math.random() * 0.5 - 0.15,
-          alpha: Math.random() * 0.6 + 0.2
+    function initBgParticles() {
+      bgParticles = [];
+      const count = Math.min(45, Math.floor(window.innerWidth / 30));
+      for (let i = 0; i < count; i++) {
+        bgParticles.push({
+          x: Math.random() * bgCanvas.width,
+          y: Math.random() * bgCanvas.height,
+          radius: Math.random() * 2 + 0.6,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: -Math.random() * 0.4 - 0.1,
+          alpha: Math.random() * 0.5 + 0.2,
+          color: Math.random() > 0.4 ? '#f5b700' : '#c61a29'
         });
       }
+    }
 
-      function renderParticles() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = '#b8903a';
+    function renderBgParticles() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
 
-        particles.forEach(p => {
-          ctx.globalAlpha = p.alpha;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fill();
+      bgParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
 
-          p.x += p.speedX;
-          p.y += p.speedY;
+        if (p.y < 0) {
+          p.y = bgCanvas.height + 10;
+          p.x = Math.random() * bgCanvas.width;
+        }
+        if (p.x < 0) p.x = bgCanvas.width;
+        if (p.x > bgCanvas.width) p.x = 0;
 
-          if (p.y < 0) {
-            p.y = height + 10;
-            p.x = Math.random() * width;
-          }
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
+        bgCtx.save();
+        bgCtx.globalAlpha = p.alpha;
+        bgCtx.fillStyle = p.color;
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        bgCtx.fill();
+        bgCtx.restore();
+      });
+
+      requestAnimationFrame(renderBgParticles);
+    }
+
+    /* ==========================================
+       INICIALIZAÇÃO GERAL
+       ========================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      initBgParticles();
+      renderBgParticles();
+      renderCase();
+      renderQuizQuestion();
+      updateCalculator();
+
+      // Efeito de 3D tilt no brasão
+      const card = document.getElementById('emblem-card');
+      if (card) {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotX = (-y / rect.height) * 20;
+          const rotY = (x / rect.width) * 20;
+          card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
         });
 
-        requestAnimationFrame(renderParticles);
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
       }
-      renderParticles();
-    }
+    });
   </script>
 </body>
 </html>
